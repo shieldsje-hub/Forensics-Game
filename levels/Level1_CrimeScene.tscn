@@ -1,7 +1,123 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckv510xmonllx"]
+[gd_scene load_steps=17 format=3 uid="uid://ckv510xmonllx"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
+[ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
+[ext_resource type="Script" uid="uid://bnx54xj1cxt22" path="res://levels/door_1.gd" id="2_i2rie"]
+[ext_resource type="Script" uid="uid://bi6e6svqnh8m7" path="res://player/player.gd" id="3_jm2ov"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xpw07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
+size = Vector2(1121.75, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm2ov"]
+size = Vector2(36.3777, 202.1585)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2m0k3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wesik"]
+size = Vector2(36.406258, 72.08594)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3e552"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17h0l"]
+size = Vector2(36.38244, 72.030304)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pltr5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsg3g"]
+size = Vector2(1121.826, 31.665524)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ow1bj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vrv86"]
+radius = 15.881591
+height = 87.315956
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g3hlq"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_lcarr")
 
 [node name="Player" parent="." instance=ExtResource("1_1yedr")]
+position = Vector2(168, 16)
+script = ExtResource("3_jm2ov")
+
+[node name="mappieces" type="Node" parent="."]
+
+[node name="floor1" type="StaticBody2D" parent="mappieces"]
+position = Vector2(-1138.3939, -25.67804)
+
+[node name="floor1s" type="Sprite2D" parent="mappieces/floor1"]
+position = Vector2(559.125, 16)
+scale = Vector2(1121.75, 25.5)
+texture = SubResource("PlaceholderTexture2D_xpw07")
+
+[node name="floor1c" type="CollisionShape2D" parent="mappieces/floor1"]
+position = Vector2(559.125, 16.007813)
+shape = SubResource("RectangleShape2D_lcarr")
+
+[node name="wall1" type="StaticBody2D" parent="mappieces"]
+position = Vector2(-1138.3939, -25.67804)
+
+[node name="wall1c" type="CollisionShape2D" parent="mappieces/wall1"]
+position = Vector2(16.45467, -97.76287)
+shape = SubResource("RectangleShape2D_jm2ov")
+
+[node name="all1s" type="Sprite2D" parent="mappieces/wall1"]
+position = Vector2(16.450682, -97.77132)
+scale = Vector2(36.407898, 202.15796)
+texture = SubResource("PlaceholderTexture2D_2m0k3")
+
+[node name="wall2" type="StaticBody2D" parent="mappieces"]
+position = Vector2(-1138.3939, -25.67804)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mappieces/wall2"]
+position = Vector2(418.92188, -162.77734)
+shape = SubResource("RectangleShape2D_wesik")
+
+[node name="Sprite2D" type="Sprite2D" parent="mappieces/wall2"]
+position = Vector2(418.92352, -162.84727)
+scale = Vector2(36.402584, 72.231415)
+texture = SubResource("PlaceholderTexture2D_3e552")
+
+[node name="wall3" type="StaticBody2D" parent="mappieces"]
+
+[node name="wall3c" type="CollisionShape2D" parent="mappieces/wall3"]
+position = Vector2(-36.550594, -188.46828)
+shape = SubResource("RectangleShape2D_17h0l")
+
+[node name="wall3s" type="Sprite2D" parent="mappieces/wall3"]
+position = Vector2(-36.554676, -188.49266)
+scale = Vector2(36.394157, 72.08964)
+texture = SubResource("PlaceholderTexture2D_pltr5")
+
+[node name="ceiling1" type="StaticBody2D" parent="mappieces"]
+position = Vector2(-1138.3939, -25.67804)
+
+[node name="ceiling1c" type="CollisionShape2D" parent="mappieces/ceiling1"]
+position = Vector2(559.06146, -214.7688)
+shape = SubResource("RectangleShape2D_qsg3g")
+
+[node name="ceilings" type="Sprite2D" parent="mappieces/ceiling1"]
+position = Vector2(559.0788, -214.70856)
+scale = Vector2(1121.8423, 31.788637)
+texture = SubResource("PlaceholderTexture2D_ow1bj")
+
+[node name="door1" type="Area2D" parent="mappieces"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_i2rie")
+
+[node name="door1c" type="CollisionShape2D" parent="mappieces/door1"]
+position = Vector2(-36.434204, -94.93422)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vrv86")
+
+[node name="door1s" type="Sprite2D" parent="mappieces/door1"]
+position = Vector2(-36.488552, -87.43559)
+scale = Vector2(-19.037712, -130.0293)
+texture = SubResource("PlaceholderTexture2D_g3hlq")
+
+[connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
+[connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
