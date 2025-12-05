@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 		if playerco.direction:
 			scale.x = -2.0
 		else:
-			scale.y = 2.0
+			scale.x = 2.0
 	else:
 		scale.x = 1.0

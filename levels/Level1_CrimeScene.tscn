@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="4_3e552"]
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="5_17h0l"]
 [ext_resource type="PackedScene" uid="uid://c5uv6boav5a3u" path="res://objects/Evidence.tscn" id="5_jm2ov"]
+[ext_resource type="Texture2D" uid="uid://dsjh0t0bjcou5" path="res://levels/_4e8efc53-ea49-4da5-8106-e8302b436385.jpg" id="7_17h0l"]
 [ext_resource type="Texture2D" uid="uid://cscnxsisswt78" path="res://levels/_969b87a9-25b7-4c50-a1a6-f3e0c5e952a7-removebg-preview.png" id="8_3e552"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
@@ -27,8 +28,6 @@ size = Vector2(1121.826, 31.665524)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vrv86"]
 radius = 15.881591
 height = 87.315956
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g3hlq"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jm2ov"]
 
@@ -156,9 +155,12 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vrv86")
 
 [node name="door1s" type="Sprite2D" parent="mappieces/door1"]
-position = Vector2(-36.488552, -87.43559)
-scale = Vector2(-19.037712, -130.0293)
-texture = SubResource("PlaceholderTexture2D_g3hlq")
+position = Vector2(-36.488552, -87.372375)
+rotation = 1.5707964
+scale = Vector2(0.127, 0.092)
+texture = ExtResource("7_17h0l")
+region_enabled = true
+region_rect = Rect2(0, 384, 1024, 184)
 
 [node name="door2" type="Area2D" parent="mappieces"]
 position = Vector2(-683, 0)
@@ -172,9 +174,12 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vrv86")
 
 [node name="door2s" type="Sprite2D" parent="mappieces/door2"]
-position = Vector2(-36.488552, -87.43559)
-scale = Vector2(-19.037712, -130.0293)
-texture = SubResource("PlaceholderTexture2D_g3hlq")
+position = Vector2(-36.518307, -87.37617)
+rotation = 1.5707964
+scale = Vector2(0.12699525, 0.091648154)
+texture = ExtResource("7_17h0l")
+region_enabled = true
+region_rect = Rect2(0, 384, 1024, 184)
 
 [node name="floor2" type="StaticBody2D" parent="mappieces"]
 
@@ -189,6 +194,7 @@ shape = SubResource("RectangleShape2D_2m0k3")
 
 [node name="Evidence" parent="." instance=ExtResource("5_jm2ov")]
 modulate = Color(0.42365062, 0.42365065, 0.42365062, 1)
+z_index = -1
 position = Vector2(-292, -94.00001)
 scale = Vector2(0.47727272, 0.57281554)
 
