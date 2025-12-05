@@ -188,6 +188,7 @@ position = Vector2(92.17473, -9.669591)
 shape = SubResource("RectangleShape2D_2m0k3")
 
 [node name="Evidence" parent="." instance=ExtResource("5_jm2ov")]
+modulate = Color(0.42365062, 0.42365065, 0.42365062, 1)
 position = Vector2(-292, -94.00001)
 scale = Vector2(0.47727272, 0.57281554)
 
@@ -195,6 +196,7 @@ scale = Vector2(0.47727272, 0.57281554)
 script = SubResource("GDScript_wesik")
 
 [node name="969b87a925b74c50A1a6F3e0c5e952a7RemovebgPreview" type="Sprite2D" parent="."]
+self_modulate = Color(0.70796657, 0.7079665, 0.7079665, 1)
 position = Vector2(-1008.6802, -88.375)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("8_3e552")
