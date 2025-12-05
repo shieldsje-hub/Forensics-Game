@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=19 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="4_3e552"]
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="5_17h0l"]
 [ext_resource type="PackedScene" uid="uid://c5uv6boav5a3u" path="res://objects/Evidence.tscn" id="5_jm2ov"]
+[ext_resource type="Texture2D" uid="uid://cscnxsisswt78" path="res://levels/_969b87a9-25b7-4c50-a1a6-f3e0c5e952a7-removebg-preview.png" id="8_3e552"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -192,6 +193,11 @@ scale = Vector2(0.47727272, 0.57281554)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_wesik")
+
+[node name="969b87a925b74c50A1a6F3e0c5e952a7RemovebgPreview" type="Sprite2D" parent="."]
+position = Vector2(-1008.6802, -88.375)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_3e552")
 
 [connection signal="body_entered" from="mappieces/door1" to="Player" method="_on_door_1_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="Player" method="_on_door_1_body_exited"]
