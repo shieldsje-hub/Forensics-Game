@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://48mr70hubn3e"]
+[gd_scene load_steps=4 format=3 uid="uid://c5uv6boav5a3u"]
 
-[ext_resource type="Script" uid="uid://jmokdhd63tvk" path="res://objects/knife.gd" id="1_f3qjk"]
-[ext_resource type="Texture2D" uid="uid://csat55gei317t" path="res://levels/knife-removebg-preview (1).png" id="2_f3qjk"]
+[ext_resource type="Script" uid="uid://da6y7xoug77vu" path="res://objects/blood.gd" id="1_jubgs"]
+[ext_resource type="Texture2D" uid="uid://bvtv1hfq8h5x0" path="res://levels/blood_splatter-removebg-preview.png" id="2_jubgs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2b5e"]
 
-[node name="knife" type="Node2D"]
-script = ExtResource("1_f3qjk")
+[node name="Evidence" type="Node2D"]
+script = ExtResource("1_jubgs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_f3qjk")
+texture = ExtResource("2_jubgs")
 
 [node name="Area2D" type="Area2D" parent="."]
 
