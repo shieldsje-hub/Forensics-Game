@@ -264,4 +264,6 @@ position = Vector2(-894, -37)
 [connection signal="body_exited" from="mappieces/door1" to="mappieces/door1" method="_on_body_exited"]
 [connection signal="body_entered" from="mappieces/door2" to="mappieces/door1" method="_on_door_2_body_entered"]
 [connection signal="body_exited" from="mappieces/door2" to="mappieces/door1" method="_on_door_2_body_exited"]
+[connection signal="body_entered" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_entered"]
+[connection signal="body_exited" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_exited"]
 [connection signal="collected" from="knife" to="." method="_on_knife_collected"]
