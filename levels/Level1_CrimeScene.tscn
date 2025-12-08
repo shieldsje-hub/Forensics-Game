@@ -214,7 +214,7 @@ collision_mask = 4
 script = ExtResource("9_vrv86")
 
 [node name="buildingoutsidewalls" type="Sprite2D" parent="mappieces/buildingoutsidewall"]
-z_index = 1
+z_index = 50
 texture_repeat = 2
 position = Vector2(-579.06213, -140.33394)
 scale = Vector2(0.549926, 0.47516766)
@@ -229,7 +229,7 @@ shape = SubResource("RectangleShape2D_lgesj")
 [node name="PointLight2D" type="PointLight2D" parent="mappieces"]
 position = Vector2(-413.56607, -208.98103)
 scale = Vector2(2.5479736, 2)
-energy = 12.41
+energy = 2.15
 blend_mode = 2
 texture = ExtResource("9_ow1bj")
 

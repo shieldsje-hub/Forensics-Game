@@ -9,6 +9,7 @@
 script = ExtResource("1_jubgs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.30323282, 0.30323282, 0.30323282, 1)
 texture = ExtResource("2_jubgs")
 
 [node name="Area2D" type="Area2D" parent="."]
