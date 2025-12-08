@@ -6,7 +6,8 @@ extends Area2D
 
 var work
 var work2
-
+func _ready() -> void:
+	pass
 func _process(delta: float):
 	if work:
 		if player.velocity.x < 0.0:
@@ -35,6 +36,7 @@ func _on_body_exited(body: Node2D) -> void:
 		work2 = false
 		sprite.scale.y = 0.092
 		sprite.position.x = 0.0
+		sprite2.scale.y = 0.092
 		
 		#sprite2.scale.y = 0.092
 

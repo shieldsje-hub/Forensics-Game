@@ -49,14 +49,26 @@ size = Vector2(186.33998, 107.34003)
 script/source = "extends Camera2D
 
 @onready var player := get_tree().get_nodes_in_group(\"player\")[0]
-
+var zoome = false
+@onready var knifespriterigid: Sprite2D = $\"../RigidBody2D/knifespriterigid\"
 
 func _ready() -> void:
 	zoom = Vector2(0.5, 0.5)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if zoome:
+		zoom = Vector2(0.4, 0.4)
+	if not zoome:
+		zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
+	if Input.is_action_just_pressed(\"zoom\"):
+		if zoome:
+			zoome = false
+		else:
+			zoome = true
+		
 	global_position = lerp(global_position, player.global_position + Vector2(0.0, -90.0), delta * 3)
-	zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
+	#global_position = lerp(global_position, knifespriterigid.global_position, delta * 3)
 "
 
 [node name="game" type="Node2D"]
@@ -71,6 +83,8 @@ script = ExtResource("3_jm2ov")
 
 [node name="floor1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="floor1s" type="Sprite2D" parent="mappieces/floor1"]
 texture_repeat = 2
@@ -86,6 +100,8 @@ shape = SubResource("RectangleShape2D_lcarr")
 
 [node name="wall1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="wall1c" type="CollisionShape2D" parent="mappieces/wall1"]
 position = Vector2(17.159912, -97.7608)
@@ -100,6 +116,8 @@ region_rect = Rect2(0, 0, 219.6142, 1024)
 
 [node name="wall2" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mappieces/wall2"]
 position = Vector2(418.92188, -162.77734)
@@ -113,6 +131,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 216, 496)
 
 [node name="wall3" type="StaticBody2D" parent="mappieces"]
+collision_layer = 9
+collision_mask = 9
 
 [node name="wall3c" type="CollisionShape2D" parent="mappieces/wall3"]
 position = Vector2(-36.550594, -188.46828)
@@ -147,6 +167,8 @@ region_rect = Rect2(0, -152, 1176, 1176)
 
 [node name="ceiling1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="ceiling1c" type="CollisionShape2D" parent="mappieces/ceiling1"]
 position = Vector2(559.06146, -214.7688)
@@ -197,6 +219,8 @@ region_rect = Rect2(0, 384, 1024, 184)
 [node name="floor2" type="StaticBody2D" parent="mappieces"]
 position = Vector2(300, 0)
 scale = Vector2(4, 1)
+collision_layer = 9
+collision_mask = 9
 
 [node name="floor2s" type="Sprite2D" parent="mappieces/floor2"]
 self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
@@ -283,18 +307,20 @@ texture = ExtResource("8_3e552")
 position = Vector2(-483, -98)
 scale = Vector2(0.5, 0.5)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="kniferigid" type="RigidBody2D" parent="."]
 position = Vector2(-900, -40)
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("14_26cpd")
 
-[node name="knife" parent="RigidBody2D" instance=ExtResource("10_qsg3g")]
-position = Vector2(-2.0474243, -0.96640015)
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="knifespriterigid" type="Sprite2D" parent="kniferigid"]
 texture = ExtResource("15_lgesj")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+[node name="knifecollisionrigid" type="CollisionPolygon2D" parent="kniferigid"]
 polygon = PackedVector2Array(-35.57312, -17.59172, -24.707825, -17.241226, -23.305847, -49.136154, -12.791016, -49.48665, -11.389038, -120.6369, -34.521606, -134.30617, -36.975098, -124.141846)
+
+[node name="knife" parent="kniferigid" instance=ExtResource("10_qsg3g")]
+position = Vector2(-2.0474243, -0.96640015)
 
 [connection signal="area_entered" from="mappieces/door1" to="mappieces/door1" method="_on_area_entered"]
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
@@ -305,4 +331,4 @@ polygon = PackedVector2Array(-35.57312, -17.59172, -24.707825, -17.241226, -23.3
 [connection signal="body_exited" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_exited"]
 [connection signal="body_entered" from="mappieces/car go?" to="Player" method="_on_car_go_body_entered"]
 [connection signal="body_exited" from="mappieces/car go?" to="Player" method="_on_car_go_body_exited"]
-[connection signal="collected" from="RigidBody2D/knife" to="." method="_on_knife_collected"]
+[connection signal="collected" from="kniferigid/knife" to="." method="_on_knife_collected"]
