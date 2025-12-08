@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="5_17h0l"]
 [ext_resource type="Texture2D" uid="uid://dsjh0t0bjcou5" path="res://levels/_4e8efc53-ea49-4da5-8106-e8302b436385.jpg" id="7_17h0l"]
 [ext_resource type="Texture2D" uid="uid://cscnxsisswt78" path="res://levels/_969b87a9-25b7-4c50-a1a6-f3e0c5e952a7-removebg-preview.png" id="8_3e552"]
-[ext_resource type="Texture2D" uid="uid://cg71cbm8qhjp6" path="res://levels/lightungtitledusethis.png" id="9_ow1bj"]
+[ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="9_ow1bj"]
 [ext_resource type="PackedScene" uid="uid://by21eirwjtw2w" path="res://objects/blood.tscn" id="9_pltr5"]
 [ext_resource type="Script" uid="uid://ceieof5o152ko" path="res://levels/buildingoutsidewall.gd" id="9_vrv86"]
 [ext_resource type="PackedScene" uid="uid://48mr70hubn3e" path="res://objects/knife.tscn" id="10_qsg3g"]
@@ -228,9 +228,17 @@ position = Vector2(-559.045, -116.832756)
 shape = SubResource("RectangleShape2D_lgesj")
 
 [node name="PointLight2D" type="PointLight2D" parent="mappieces"]
-position = Vector2(-364.39966, -201.94785)
-scale = Vector2(2, 2)
-energy = 8.91
+position = Vector2(-413.56607, -208.98103)
+scale = Vector2(2.5479736, 2)
+energy = 12.41
+blend_mode = 2
+texture = ExtResource("9_ow1bj")
+
+[node name="PointLight2D2" type="PointLight2D" parent="mappieces"]
+position = Vector2(-937.8248, -208.71982)
+rotation = 0.008726646
+scale = Vector2(1.5, 1.647435)
+energy = 12.41
 blend_mode = 2
 texture = ExtResource("9_ow1bj")
 
