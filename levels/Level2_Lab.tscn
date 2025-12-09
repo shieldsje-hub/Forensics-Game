@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=20 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
@@ -18,6 +18,9 @@ size = Vector2(1045.5967, 44.982075)
 
 [sub_resource type="RectangleShape2D" id="13"]
 size = Vector2(1045.5156, 44.90625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7j1t"]
+size = Vector2(608.8434, 56.460182)
 
 [sub_resource type="GDScript" id="15"]
 script/source = "extends Camera2D
@@ -75,6 +78,20 @@ texture = ExtResource("3")
 region_enabled = true
 region_rect = Rect2(0, 400, 2056, 80)
 
+[node name="labwall1" type="StaticBody2D" parent="mappiecesbutlab"]
+z_index = 4
+
+[node name="labwall1s" type="Sprite2D" parent="mappiecesbutlab/labwall1"]
+position = Vector2(571.004, -99.929565)
+scale = Vector2(0.24821426, 0.45740703)
+texture = ExtResource("3")
+region_enabled = true
+region_rect = Rect2(0, 232, 216, 640)
+
+[node name="labwall1c" type="CollisionShape2D" parent="mappiecesbutlab/labwall1"]
+position = Vector2(294.4217, 18.230091)
+shape = SubResource("RectangleShape2D_i7j1t")
+
 [node name="big_wall" type="Sprite2D" parent="."]
 self_modulate = Color(0.809, 0.809, 0.809, 1)
 texture_repeat = 3
@@ -130,6 +147,7 @@ collision_mask = 4
 script = ExtResource("10")
 
 [node name="turn lights onc" type="CollisionShape2D" parent="turn lights on"]
+z_index = -4096
 position = Vector2(-138.508, -12.1292)
 scale = Vector2(111.03199, 34.57489)
 shape = SubResource("RectangleShape2D_otmip")

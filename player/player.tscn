@@ -14,10 +14,10 @@ collision_mask = 7
 script = ExtResource("1_rkbax")
 
 [node name="players" type="Sprite2D" parent="player control"]
-position = Vector2(23.96373, -53.924553)
+position = Vector2(-30.713303, 7.7623672)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_rkbax")
 
 [node name="playerc" type="CollisionShape2D" parent="player control"]
-position = Vector2(49.351498, -64.12446)
+position = Vector2(0.004562378, 0.3540764)
 shape = SubResource("RectangleShape2D_yw30f")

@@ -19,9 +19,13 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = lerp(velocity.x, direction * SPEED, delta * 8) 
-		scale.x = direction
+		#scale.x = direction
 	else:
 		velocity.x = lerp(velocity.x, 0.0, delta * 8)
-	
+	if direction < 0:
+		$players.flip_h = false
+	elif direction > 0:
+		$players.flip_h = true
+
 	move_and_slide()
 	print(direction)
