@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=11 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_n7h3g"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2_usuyx"]
 [ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3_ap00a"]
+[ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4_56ovf"]
+[ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5_wd807"]
+[ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="6_wd807"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohh8c"]
 size = Vector2(1045.5967, 44.982075)
@@ -10,9 +13,35 @@ size = Vector2(1045.5967, 44.982075)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usuyx"]
 size = Vector2(1045.5156, 44.90625)
 
-[node name="Game" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_usuyx"]
+script/source = "extends Camera2D
 
-[node name="player" parent="." instance=ExtResource("1_n7h3g")]
+@onready var player := get_tree().get_nodes_in_group(\"player\")[0]
+var zoome = false
+@onready var knifespriterigid: Sprite2D = $\"../RigidBody2D/knifespriterigid\"
+
+func _ready() -> void:
+	zoom = Vector2(0.5, 0.5)
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if zoome:
+		zoom = Vector2(0.4, 0.4)
+	if not zoome:
+		zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
+	if Input.is_action_just_pressed(\"zoom\"):
+		if zoome:
+			zoome = false
+		else:
+			zoome = true
+		
+	global_position = lerp(global_position, player.global_position + Vector2(0.0, -90.0), delta * 3)
+	#global_position = lerp(global_position, knifespriterigid.global_position, delta * 3)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oa2un"]
+
+[node name="Game" type="Node2D"]
 
 [node name="mappiecesbutlab" type="Node2D" parent="."]
 
@@ -57,3 +86,26 @@ scale = Vector2(0.21193975, 0.3134307)
 texture = ExtResource("3_ap00a")
 region_enabled = true
 region_rect = Rect2(0, 224, 7400, 648)
+
+[node name="player" parent="." instance=ExtResource("1_n7h3g")]
+position = Vector2(-185, -45)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = SubResource("GDScript_usuyx")
+
+[node name="Go back" type="Area2D" parent="."]
+position = Vector2(-941, -98)
+script = ExtResource("4_56ovf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Go back"]
+scale = Vector2(8.087549, 14.574887)
+shape = SubResource("RectangleShape2D_oa2un")
+
+[node name="gloves" parent="." instance=ExtResource("6_wd807")]
+position = Vector2(-378, -95)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("5_wd807")]
+
+[connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]

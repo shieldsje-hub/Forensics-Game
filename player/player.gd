@@ -9,7 +9,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if cargocan and Input.is_action_just_pressed("pickup"):
-		pass #idk add code here to go to lab
+		get_tree().change_scene_to_file("res://levels/Level2_Lab.tscn")
+
 
 
 func _on_door_1_body_entered(body: Node2D) -> void:

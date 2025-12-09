@@ -1,6 +1,6 @@
 extends Node2D
 
-signal collected(item_name)
+signal collected
 var in_evidence
 @export var item_name := "knife"
 var collectede = false
@@ -10,19 +10,12 @@ func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		in_evidence = true
 	
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("pickup") and in_evidence:
-		collectede = true
-		emit_signal("collected", item_name)
-		print("knife")
-		if inventory.add_item(item_name):
-			queue_free() # remove item from world
-	
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	in_evidence = false
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("pickup") and in_evidence:
+		emit_signal("collected")
 		var inventory = get_node("/root/inventory")
 
 		# Decide internal name
@@ -39,9 +32,7 @@ func _physics_process(delta):
 		if inventory.add_item(internal_name):
 			# But add a UI alias so the player always sees "knife"
 			_set_ui_name_alias(inventory, internal_name, "knife")
-
 			queue_free()
-
 # ----------------------------------------------------
 # Assigns what text should show in UI for a given item
 # ----------------------------------------------------

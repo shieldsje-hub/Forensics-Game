@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=28 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -13,9 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://by21eirwjtw2w" path="res://objects/blood.tscn" id="9_pltr5"]
 [ext_resource type="Script" uid="uid://ceieof5o152ko" path="res://levels/buildingoutsidewall.gd" id="9_vrv86"]
 [ext_resource type="PackedScene" uid="uid://48mr70hubn3e" path="res://objects/knife.tscn" id="10_qsg3g"]
-[ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="13_g3hlq"]
-[ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="13_vrv86"]
 [ext_resource type="Texture2D" uid="uid://b01fi8eyfm20b" path="res://levels/bkvyrdhcar.png" id="11_lgesj"]
+[ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="13_vrv86"]
 [ext_resource type="Script" uid="uid://dybkcq7i2shya" path="res://levels/kniferigid.gd" id="14_26cpd"]
 [ext_resource type="Texture2D" uid="uid://csat55gei317t" path="res://levels/knife-removebg-preview (1).png" id="15_lgesj"]
 
@@ -326,9 +325,6 @@ polygon = PackedVector2Array(-35.57312, -17.59172, -24.707825, -17.241226, -23.3
 [node name="knife" parent="kniferigid" instance=ExtResource("10_qsg3g")]
 position = Vector2(28.434143, 79.18887)
 
-[node name="gloves" parent="." instance=ExtResource("13_g3hlq")]
-position = Vector2(52, -66)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("13_vrv86")]
@@ -342,4 +338,4 @@ position = Vector2(52, -66)
 [connection signal="body_exited" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_exited"]
 [connection signal="body_entered" from="mappieces/car go?" to="Player" method="_on_car_go_body_entered"]
 [connection signal="body_exited" from="mappieces/car go?" to="Player" method="_on_car_go_body_exited"]
-[connection signal="collected" from="kniferigid/knife" to="." method="_on_knife_collected"]
+[connection signal="collected" from="kniferigid/knife" to="kniferigid" method="_on_knife_collected"]

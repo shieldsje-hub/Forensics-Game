@@ -17,13 +17,10 @@ func _process(delta: float) -> void:
 		light2.energy = lerp(light2.energy, 12.41, delta * 2)
 	else:
 		modulate = lerp(modulate, Color(1.0, 1.0, 1.0, 1.0), delta * 3)
-<<<<<<< HEAD
-=======
 		light1.energy = lerp(light1.energy, 2.5, delta * 3)
 		light2.energy = lerp(light2.energy, 2.5, delta * 3)
 	
 	
->>>>>>> f047a0acc11e1018df6c15d2972541e8c207ff8d
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
