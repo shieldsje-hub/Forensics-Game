@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=14 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_n7h3g"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2_usuyx"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4_56ovf"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5_wd807"]
 [ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="6_wd807"]
+[ext_resource type="Texture2D" uid="uid://ci6jv82jo2uxj" path="res://ui/default_table.png" id="7_oa2un"]
+[ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="7_xdms6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohh8c"]
 size = Vector2(1045.5967, 44.982075)
@@ -40,6 +42,8 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oa2un"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdms6"]
 
 [node name="Game" type="Node2D"]
 
@@ -108,4 +112,21 @@ position = Vector2(-378, -95)
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("5_wd807")]
 
+[node name="WorkArea1Knife" type="Node2D" parent="."]
+position = Vector2(130, -58)
+script = ExtResource("7_xdms6")
+
+[node name="Area2D" type="Area2D" parent="WorkArea1Knife"]
+scale = Vector2(9.345138, 5.5459323)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorkArea1Knife/Area2D"]
+scale = Vector2(1, 0.9324083)
+shape = SubResource("RectangleShape2D_xdms6")
+
+[node name="Sprite2D" type="Sprite2D" parent="WorkArea1Knife"]
+scale = Vector2(0.12505479, 0.1681961)
+texture = ExtResource("7_oa2un")
+
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
+[connection signal="body_entered" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_exited"]

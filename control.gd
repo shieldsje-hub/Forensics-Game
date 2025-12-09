@@ -9,6 +9,7 @@ var inv
 var aliases := {
 	"knife_clean": "knife",
 	"knife_tampered": "knife",
+	"knife_bloody": "knife",
 	"gloves": "gloves"  # normal items can map to themselves
 }
 

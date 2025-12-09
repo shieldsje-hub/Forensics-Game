@@ -1,43 +1,51 @@
 extends Node2D
-
 signal collected
-var in_evidence
+
+var in_evidence := false
 @export var item_name := "knife"
-var collectede = false
-func _ready() -> void:
-	collectede = false
+
 func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		in_evidence = true
-	
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	in_evidence = false
+
+func _on_area_2d_body_exited(body: Node2D):
+	if body.is_in_group("player"):
+		in_evidence = false
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("pickup") and in_evidence:
-		emit_signal("collected")
 		var inventory = get_node("/root/inventory")
 
-		# Decide internal name
+		emit_signal("collected")
+
+		# ------------------------------
+		# Determine knife variant
+		# ------------------------------
 		var internal_name := ""
 
-		if inventory.is_equipped("gloves"):
+		if inventory.is_equipped("blood"):
+			internal_name = "knife_bloody"
+			print("Picked up KNIFE with blood equipped → internal: knife_bloody")
+			inventory.remove_item("blood")   # remove one blood
+
+		elif inventory.is_equipped("gloves"):
 			internal_name = "knife_clean"
-			print("Picked up knife (gloves on) → stored as knife_clean")
+			print("Picked up KNIFE with gloves → internal: knife_clean")
+
 		else:
 			internal_name = "knife_tampered"
-			print("Picked up knife (bare hands) → stored as knife_tampered")
+			print("Picked up KNIFE with bare hands → internal: knife_tampered")
 
-		# Add internal item
+		# ------------------------------
+		# Add the final knife item
+		# ------------------------------
 		if inventory.add_item(internal_name):
-			# But add a UI alias so the player always sees "knife"
 			_set_ui_name_alias(inventory, internal_name, "knife")
 			queue_free()
-# ----------------------------------------------------
-# Assigns what text should show in UI for a given item
-# ----------------------------------------------------
+		else:
+			print("Inventory full — cannot pick up knife.")
+			
 func _set_ui_name_alias(inventory, internal_name: String, display_name: String):
-	# store alias table inside inventory if not present
 	if not inventory.has_meta("ui_alias"):
 		inventory.set_meta("ui_alias", {})
 

@@ -91,3 +91,10 @@ func _refresh_ui():
 
 	if ui_equipped:
 		ui_equipped.text = "Equipped: " + (equipped_item if equipped_item != "" else "None")
+
+func get_display_name(internal_name: String) -> String:
+	if has_meta("ui_alias"):
+		var alias = get_meta("ui_alias")
+		if internal_name in alias:
+			return alias[internal_name]
+	return internal_name
