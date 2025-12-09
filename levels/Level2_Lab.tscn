@@ -1,54 +1,35 @@
 [gd_scene load_steps=15 format=3 uid="uid://dscomxe8hfpni"]
 
-[ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_n7h3g"]
-[ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2_usuyx"]
-[ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3_ap00a"]
-[ext_resource type="Script" path="res://levels/go_back.gd" id="4_56ovf"]
-[ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5_wd807"]
-[ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="6_wd807"]
-[ext_resource type="Texture2D" uid="uid://ci6jv82jo2uxj" path="res://ui/default_table.png" id="7_oa2un"]
-[ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="7_xdms6"]
-[ext_resource type="PackedScene" path="res://objects/gloves.tscn" id="6_wd807"]
-[ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="7_ya6rl"]
-[ext_resource type="Script" uid="uid://dpouvqhcjxjgs" path="res://levels/turn_lights_on.gd" id="8_4250f"]
-[ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="9_5dnxl"]
+[ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3"]
+[ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://ci6jv82jo2uxj" path="res://ui/default_table.png" id="7"]
+[ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="8"]
+[ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="9"]
+[ext_resource type="Script" uid="uid://dpouvqhcjxjgs" path="res://levels/turn_lights_on.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="11"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohh8c"]
+[sub_resource type="RectangleShape2D" id="12"]
 size = Vector2(1045.5967, 44.982075)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_usuyx"]
+[sub_resource type="RectangleShape2D" id="13"]
 size = Vector2(1045.5156, 44.90625)
 
-[sub_resource type="GDScript" id="GDScript_usuyx"]
+[sub_resource type="GDScript" id="15"]
 script/source = "extends Camera2D
-
 @onready var player := get_tree().get_nodes_in_group(\"player\")[0]
 var zoome = false
-@onready var knifespriterigid: Sprite2D = $\"../RigidBody2D/knifespriterigid\"
-
-func _ready() -> void:
-	zoom = Vector2(0.5, 0.5)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if zoome:
-		zoom = Vector2(0.4, 0.4)
-	if not zoome:
-		zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
-	if Input.is_action_just_pressed(\"zoom\"):
-		if zoome:
-			zoome = false
-		else:
-			zoome = true
-		
-	global_position = lerp(global_position, player.global_position + Vector2(0.0, -90.0), delta * 3)
-	#global_position = lerp(global_position, knifespriterigid.global_position, delta * 3)
+func _ready():
+    zoom = Vector2(0.5,0.5)
+func _process(delta):
+    zoom = Vector2(0.4,0.4) if zoome else lerp(zoom, Vector2(1.7,1.7), delta)
+    if Input.is_action_just_pressed(\"zoom\"):
+        zoome = not zoome
+    global_position = lerp(global_position, player.global_position + Vector2(0,-90), delta*3)
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oa2un"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fowqb"]
-size = Vector2(316.6101, 20)
 
 [node name="Game" type="Node2D"]
 
@@ -58,116 +39,112 @@ size = Vector2(316.6101, 20)
 scale = Vector2(1.5, 1)
 
 [node name="labfloor1s" type="Sprite2D" parent="mappiecesbutlab/labfloor1"]
-self_modulate = Color(0.50534403, 0.5053441, 0.50534403, 1)
+self_modulate = Color(0.505344, 0.505344, 0.505344, 1)
 z_index = 1
 texture_repeat = 2
-position = Vector2(-159.93414, 24.057898)
-scale = Vector2(0.50464207, 0.46858743)
-texture = ExtResource("2_usuyx")
+position = Vector2(-159.934, 24.0579)
+scale = Vector2(0.504642, 0.468587)
+texture = ExtResource("2")
 region_enabled = true
 region_rect = Rect2(0, 464, 2072, 96)
 
 [node name="labfloor1c" type="CollisionShape2D" parent="mappiecesbutlab/labfloor1"]
-position = Vector2(-159.96207, 24.022287)
-shape = SubResource("RectangleShape2D_ohh8c")
+position = Vector2(-159.962, 24.022)
+shape = SubResource("12")
 
 [node name="labceiling1" type="StaticBody2D" parent="mappiecesbutlab"]
 scale = Vector2(1.5, 1)
 
 [node name="labceiling1c" type="CollisionShape2D" parent="mappiecesbutlab/labceiling1"]
 position = Vector2(-160, -224)
-shape = SubResource("RectangleShape2D_usuyx")
+shape = SubResource("13")
 
 [node name="labceiling1s" type="Sprite2D" parent="mappiecesbutlab/labceiling1"]
 modulate = Color(0.556953, 0.556953, 0.556953, 1)
 texture_repeat = 2
-position = Vector2(-160.05981, -223.93031)
-scale = Vector2(0.5086176, 0.5591728)
-texture = ExtResource("3_ap00a")
+position = Vector2(-160.059, -223.93)
+scale = Vector2(0.508618, 0.559173)
+texture = ExtResource("3")
 region_enabled = true
 region_rect = Rect2(0, 400, 2056, 80)
 
-[node name="420c81De8Eb542f292456d3Ce6e110e1" type="Sprite2D" parent="."]
-self_modulate = Color(0.8089983, 0.8089983, 0.8089982, 1)
+[node name="big_wall" type="Sprite2D" parent="."]
+self_modulate = Color(0.809, 0.809, 0.809, 1)
 texture_repeat = 3
-position = Vector2(-239.95789, -100.01007)
-scale = Vector2(0.21193975, 0.3134307)
-texture = ExtResource("3_ap00a")
+position = Vector2(-239.958, -100.01)
+scale = Vector2(0.21194, 0.313431)
+texture = ExtResource("3")
 region_enabled = true
 region_rect = Rect2(0, 224, 7400, 648)
 
-[node name="player" parent="." instance=ExtResource("1_n7h3g")]
+[node name="player" parent="." instance=ExtResource("1")]
 position = Vector2(-185, -45)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = SubResource("GDScript_usuyx")
+script = SubResource("15")
 
 [node name="Go back" type="Area2D" parent="."]
 position = Vector2(-941, -98)
-script = ExtResource("4_56ovf")
+script = ExtResource("4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Go back"]
-scale = Vector2(8.087549, 14.574887)
-shape = SubResource("RectangleShape2D_oa2un")
+scale = Vector2(8.08755, 14.5749)
 
-[node name="gloves" parent="." instance=ExtResource("6_wd807")]
+[node name="gloves" parent="." instance=ExtResource("6")]
 position = Vector2(-378, -95)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" parent="CanvasLayer" instance=ExtResource("5_wd807")]
+[node name="Control" parent="CanvasLayer" instance=ExtResource("5")]
 
 [node name="WorkArea1Knife" type="Node2D" parent="."]
 position = Vector2(130, -58)
-script = ExtResource("7_xdms6")
+script = ExtResource("8")
 
 [node name="Area2D" type="Area2D" parent="WorkArea1Knife"]
-scale = Vector2(9.345138, 5.5459323)
+scale = Vector2(9.34514, 5.54593)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorkArea1Knife/Area2D"]
-scale = Vector2(1, 0.9324083)
-shape = SubResource("RectangleShape2D_xdms6")
+scale = Vector2(1, 0.932408)
 
 [node name="Sprite2D" type="Sprite2D" parent="WorkArea1Knife"]
-scale = Vector2(0.12505479, 0.1681961)
-texture = ExtResource("7_oa2un")
+scale = Vector2(0.125055, 0.168196)
+texture = ExtResource("7")
 
-[connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
-[connection signal="body_entered" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.31431612, 0.31431612, 0.3143161, 1)
-script = ExtResource("7_ya6rl")
+color = Color(0.314316, 0.314316, 0.314316, 1)
+script = ExtResource("9")
 
 [node name="turn lights on" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("8_4250f")
+script = ExtResource("10")
 
 [node name="turn lights onc" type="CollisionShape2D" parent="turn lights on"]
-position = Vector2(-138.50839, -12.129196)
-shape = SubResource("RectangleShape2D_fowqb")
+position = Vector2(-138.508, -12.1292)
 
 [node name="light_right" type="PointLight2D" parent="."]
-position = Vector2(223.01549, -181.25381)
-rotation = 0.017453292
-scale = Vector2(2.2322016, 1.8792192)
+position = Vector2(223.015, -181.254)
+rotation = 0.0174533
+scale = Vector2(2.2322, 1.87922)
 energy = 3.49
-texture = ExtResource("9_5dnxl")
+texture = ExtResource("11")
 
 [node name="light_left" type="PointLight2D" parent="."]
-position = Vector2(-681.79846, -182.71793)
-rotation = 0.017453292
-scale = Vector2(2.2322016, 1.8792192)
+position = Vector2(-681.798, -182.718)
+rotation = 0.0174533
+scale = Vector2(2.2322, 1.87922)
 energy = 3.49
-texture = ExtResource("9_5dnxl")
+texture = ExtResource("11")
 
 [node name="light_middle" type="PointLight2D" parent="."]
-position = Vector2(-242.96046, -181.66913)
-rotation = 0.017453292
-scale = Vector2(2.2322016, 1.8792192)
+position = Vector2(-242.96, -181.669)
+rotation = 0.0174533
+scale = Vector2(2.2322, 1.87922)
 energy = 3.49
-texture = ExtResource("9_5dnxl")
+texture = ExtResource("11")
 
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
+[connection signal="body_entered" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="turn lights on" to="turn lights on" method="_on_body_entered"]
