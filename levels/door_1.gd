@@ -6,18 +6,23 @@ extends Area2D
 
 var work
 var work2
-
+func _ready() -> void:
+	pass
 func _process(delta: float):
 	if work:
 		if player.velocity.x < 0.0:
 			sprite.scale.y = 0.2
+			sprite.position.x = -10.0
 		if player.velocity.x > 0.0:
 			sprite.scale.y = -0.2
+			sprite.position.x = 10.0
 	if work2:
 		if player.velocity.x < 0.0:
 			sprite2.scale.y = 0.2
+			sprite2.position.x = -10.0
 		if player.velocity.x > 0.0:
 			sprite2.scale.y = -0.2
+			sprite2.position.x = 10.0
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -30,7 +35,11 @@ func _on_body_exited(body: Node2D) -> void:
 		work = false
 		work2 = false
 		sprite.scale.y = 0.092
+		sprite.position.x = 0.0
 		sprite2.scale.y = 0.092
+		
+		#sprite2.scale.y = 0.092
+
 
 
 func _on_door_2_body_entered(body: Node2D) -> void:
@@ -40,4 +49,5 @@ func _on_door_2_body_entered(body: Node2D) -> void:
 func _on_door_2_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		sprite2.scale.y = 0.092
+		sprite2.position.x = 0.0
 		work2 = false

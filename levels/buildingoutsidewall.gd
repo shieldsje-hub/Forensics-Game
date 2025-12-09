@@ -6,26 +6,35 @@ extends Area2D
 var opacitygo
 
 func _ready() -> void:
-	visible
+	visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if opacitygo:
-		modulate = lerp(modulate, Color(1.0, 1.0, 1.0, 0.0), delta * 3)
+		modulate = lerp(modulate, Color(1.0, 1.0, 1.0, 0.0), delta * 2)
+		light1.energy = lerp(light1.energy, 12.41, delta * 2)
+		light2.energy = lerp(light2.energy, 12.41, delta * 2)
 	else:
 		modulate = lerp(modulate, Color(1.0, 1.0, 1.0, 1.0), delta * 3)
+<<<<<<< HEAD
+=======
+		light1.energy = lerp(light1.energy, 2.5, delta * 3)
+		light2.energy = lerp(light2.energy, 2.5, delta * 3)
+	
+	
+>>>>>>> f047a0acc11e1018df6c15d2972541e8c207ff8d
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		#visible = false
-		light1.visible = true
-		light2.visible = true
+		#light1.visible = true
+		#light2.visible = true
 		opacitygo = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		#visible = true
-		light1.visible = false
-		light2.visible = false
+		#light1.visible = false
+		#light2.visible = false
 		opacitygo = false

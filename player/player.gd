@@ -1,14 +1,15 @@
 extends Node2D
 var dooropen
-
+var cargocan = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	cargocan = false # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if cargocan and Input.is_action_just_pressed("pickup"):
+		pass #idk add code here to go to lab
 
 
 func _on_door_1_body_entered(body: Node2D) -> void:
@@ -17,3 +18,11 @@ func _on_door_1_body_entered(body: Node2D) -> void:
 
 func _on_door_1_body_exited(body: Node2D) -> void:
 	dooropen = false
+
+
+func _on_car_go_body_entered(body: Node2D) -> void:
+	cargocan = true # Replace with function body.
+
+
+func _on_car_go_body_exited(body: Node2D) -> void:
+	cargocan = false # Replace with function body.

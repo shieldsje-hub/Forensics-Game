@@ -21,6 +21,8 @@ scale = Vector2(1.5, 1)
 
 [node name="labfloor1s" type="Sprite2D" parent="mappiecesbutlab/labfloor1"]
 self_modulate = Color(0.50534403, 0.5053441, 0.50534403, 1)
+z_index = 1
+texture_repeat = 2
 position = Vector2(-159.93414, 24.057898)
 scale = Vector2(0.50464207, 0.46858743)
 texture = ExtResource("2_usuyx")
@@ -40,9 +42,10 @@ shape = SubResource("RectangleShape2D_usuyx")
 
 [node name="labceiling1s" type="Sprite2D" parent="mappiecesbutlab/labceiling1"]
 modulate = Color(0.556953, 0.556953, 0.556953, 1)
+texture_repeat = 2
 position = Vector2(-160.05981, -223.93031)
 scale = Vector2(0.5086176, 0.5591728)
-texture = ExtResource("2_usuyx")
+texture = ExtResource("3_ap00a")
 region_enabled = true
 region_rect = Rect2(0, 400, 2056, 80)
 

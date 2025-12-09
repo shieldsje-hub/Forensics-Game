@@ -1,13 +1,24 @@
 extends Node2D
 
-@export var item_name := "knife"  # what the player SEES
-var in_evidence := false
-
-func _on_area_2d_body_entered(body):
+signal collected(item_name)
+var in_evidence
+@export var item_name := "knife"
+var collectede = false
+func _ready() -> void:
+	collectede = false
+func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		in_evidence = true
-
-func _on_area_2d_body_exited(body):
+	
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("pickup") and in_evidence:
+		collectede = true
+		emit_signal("collected", item_name)
+		print("knife")
+		if inventory.add_item(item_name):
+			queue_free() # remove item from world
+	
+func _on_area_2d_body_exited(body: Node2D) -> void:
 	in_evidence = false
 
 func _physics_process(delta):

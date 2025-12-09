@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=27 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -8,12 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="5_17h0l"]
 [ext_resource type="Texture2D" uid="uid://dsjh0t0bjcou5" path="res://levels/_4e8efc53-ea49-4da5-8106-e8302b436385.jpg" id="7_17h0l"]
 [ext_resource type="Texture2D" uid="uid://cscnxsisswt78" path="res://levels/_969b87a9-25b7-4c50-a1a6-f3e0c5e952a7-removebg-preview.png" id="8_3e552"]
+[ext_resource type="Texture2D" uid="uid://chgdl1fv7oxj5" path="res://levels/_72ea6320-da5c-4d3f-bac9-7c4895ca1c0d.jpg" id="8_g3hlq"]
 [ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="9_ow1bj"]
 [ext_resource type="PackedScene" uid="uid://by21eirwjtw2w" path="res://objects/blood.tscn" id="9_pltr5"]
 [ext_resource type="Script" uid="uid://ceieof5o152ko" path="res://levels/buildingoutsidewall.gd" id="9_vrv86"]
 [ext_resource type="PackedScene" uid="uid://48mr70hubn3e" path="res://objects/knife.tscn" id="10_qsg3g"]
 [ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="13_g3hlq"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="13_vrv86"]
+[ext_resource type="Texture2D" uid="uid://b01fi8eyfm20b" path="res://levels/bkvyrdhcar.png" id="11_lgesj"]
+[ext_resource type="Script" uid="uid://dybkcq7i2shya" path="res://levels/kniferigid.gd" id="14_26cpd"]
+[ext_resource type="Texture2D" uid="uid://csat55gei317t" path="res://levels/knife-removebg-preview (1).png" id="15_lgesj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -34,26 +38,39 @@ size = Vector2(1121.826, 31.665524)
 radius = 15.881591
 height = 87.315956
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jm2ov"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2m0k3"]
-size = Vector2(221.11957, 25.479864)
+size = Vector2(894.9469, 424.24542)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgesj"]
 size = Vector2(1066.9056, 215.01323)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3hlq"]
+size = Vector2(186.33998, 107.34003)
 
 [sub_resource type="GDScript" id="GDScript_wesik"]
 script/source = "extends Camera2D
 
 @onready var player := get_tree().get_nodes_in_group(\"player\")[0]
-
+var zoome = false
+@onready var knifespriterigid: Sprite2D = $\"../RigidBody2D/knifespriterigid\"
 
 func _ready() -> void:
 	zoom = Vector2(0.5, 0.5)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if zoome:
+		zoom = Vector2(0.4, 0.4)
+	if not zoome:
+		zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
+	if Input.is_action_just_pressed(\"zoom\"):
+		if zoome:
+			zoome = false
+		else:
+			zoome = true
+		
 	global_position = lerp(global_position, player.global_position + Vector2(0.0, -90.0), delta * 3)
-	zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
+	#global_position = lerp(global_position, knifespriterigid.global_position, delta * 3)
 "
 
 [node name="game" type="Node2D"]
@@ -68,6 +85,8 @@ script = ExtResource("3_jm2ov")
 
 [node name="floor1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="floor1s" type="Sprite2D" parent="mappieces/floor1"]
 texture_repeat = 2
@@ -83,6 +102,8 @@ shape = SubResource("RectangleShape2D_lcarr")
 
 [node name="wall1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="wall1c" type="CollisionShape2D" parent="mappieces/wall1"]
 position = Vector2(17.159912, -97.7608)
@@ -97,6 +118,8 @@ region_rect = Rect2(0, 0, 219.6142, 1024)
 
 [node name="wall2" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mappieces/wall2"]
 position = Vector2(418.92188, -162.77734)
@@ -110,6 +133,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 216, 496)
 
 [node name="wall3" type="StaticBody2D" parent="mappieces"]
+collision_layer = 9
+collision_mask = 9
 
 [node name="wall3c" type="CollisionShape2D" parent="mappieces/wall3"]
 position = Vector2(-36.550594, -188.46828)
@@ -144,6 +169,8 @@ region_rect = Rect2(0, -152, 1176, 1176)
 
 [node name="ceiling1" type="StaticBody2D" parent="mappieces"]
 position = Vector2(-1138.3939, -25.67804)
+collision_layer = 9
+collision_mask = 9
 
 [node name="ceiling1c" type="CollisionShape2D" parent="mappieces/ceiling1"]
 position = Vector2(559.06146, -214.7688)
@@ -158,7 +185,7 @@ region_enabled = true
 region_rect = Rect2(0, 864, 2064, 120)
 
 [node name="door1" type="Area2D" parent="mappieces"]
-position = Vector2(-31, -89)
+position = Vector2(-36, -89)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_i2rie")
@@ -192,14 +219,23 @@ region_enabled = true
 region_rect = Rect2(0, 384, 1024, 184)
 
 [node name="floor2" type="StaticBody2D" parent="mappieces"]
+position = Vector2(300, 0)
+scale = Vector2(4, 1)
+collision_layer = 9
+collision_mask = 9
 
 [node name="floor2s" type="Sprite2D" parent="mappieces/floor2"]
-position = Vector2(92.17106, -9.665316)
-scale = Vector2(221.10806, 25.49944)
-texture = SubResource("PlaceholderTexture2D_jm2ov")
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+z_index = -4
+texture_repeat = 2
+position = Vector2(-244.84833, 189.16995)
+scale = Vector2(0.36212066, 0.4143132)
+texture = ExtResource("8_g3hlq")
+region_enabled = true
+region_rect = Rect2(0, 0, 2472, 1024)
 
 [node name="floor2c" type="CollisionShape2D" parent="mappieces/floor2"]
-position = Vector2(92.17473, -9.669591)
+position = Vector2(-244.73895, 189.18198)
 shape = SubResource("RectangleShape2D_2m0k3")
 
 [node name="roof" type="Sprite2D" parent="mappieces"]
@@ -211,12 +247,13 @@ region_enabled = true
 region_rect = Rect2(0, 456, 4272, 568)
 
 [node name="buildingoutsidewall" type="Area2D" parent="mappieces"]
+visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("9_vrv86")
 
 [node name="buildingoutsidewalls" type="Sprite2D" parent="mappieces/buildingoutsidewall"]
-z_index = 1
+z_index = 50
 texture_repeat = 2
 position = Vector2(-579.06213, -140.33394)
 scale = Vector2(0.549926, 0.47516766)
@@ -229,9 +266,9 @@ position = Vector2(-559.045, -116.832756)
 shape = SubResource("RectangleShape2D_lgesj")
 
 [node name="PointLight2D" type="PointLight2D" parent="mappieces"]
-position = Vector2(-413.56607, -208.98103)
+position = Vector2(-375.9499, -201.5064)
 scale = Vector2(2.5479736, 2)
-energy = 12.41
+energy = 2.15
 blend_mode = 2
 texture = ExtResource("9_ow1bj")
 
@@ -242,6 +279,21 @@ scale = Vector2(1.5, 1.647435)
 energy = 12.41
 blend_mode = 2
 texture = ExtResource("9_ow1bj")
+
+[node name="car go?" type="Area2D" parent="mappieces"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Bkvyrdhcar" type="Sprite2D" parent="mappieces/car go?"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
+position = Vector2(547.8797, -90.27042)
+rotation = 3.1415927
+scale = Vector2(0.7, -0.7)
+texture = ExtResource("11_lgesj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mappieces/car go?"]
+position = Vector2(546.7, -95.70001)
+shape = SubResource("RectangleShape2D_g3hlq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = SubResource("GDScript_wesik")
@@ -257,8 +309,22 @@ texture = ExtResource("8_3e552")
 position = Vector2(-483, -98)
 scale = Vector2(0.5, 0.5)
 
-[node name="knife" parent="." instance=ExtResource("10_qsg3g")]
-position = Vector2(-894, -37)
+[node name="kniferigid" type="RigidBody2D" parent="."]
+position = Vector2(-876.85657, -94.75397)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("14_26cpd")
+
+[node name="knifespriterigid" type="Sprite2D" parent="kniferigid"]
+position = Vector2(27.65918, 79.02634)
+texture = ExtResource("15_lgesj")
+
+[node name="knifecollisionrigid" type="CollisionPolygon2D" parent="kniferigid"]
+position = Vector2(27.65918, 79.59082)
+polygon = PackedVector2Array(-35.57312, -17.59172, -24.707825, -17.241226, -23.305847, -49.136154, -12.791016, -49.48665, -11.389038, -120.6369, -34.521606, -134.30617, -36.975098, -124.141846)
+
+[node name="knife" parent="kniferigid" instance=ExtResource("10_qsg3g")]
+position = Vector2(28.434143, 79.18887)
 
 [node name="gloves" parent="." instance=ExtResource("13_g3hlq")]
 position = Vector2(52, -66)
@@ -274,3 +340,6 @@ position = Vector2(52, -66)
 [connection signal="body_exited" from="mappieces/door2" to="mappieces/door1" method="_on_door_2_body_exited"]
 [connection signal="body_entered" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_entered"]
 [connection signal="body_exited" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_exited"]
+[connection signal="body_entered" from="mappieces/car go?" to="Player" method="_on_car_go_body_entered"]
+[connection signal="body_exited" from="mappieces/car go?" to="Player" method="_on_car_go_body_exited"]
+[connection signal="collected" from="kniferigid/knife" to="." method="_on_knife_collected"]
