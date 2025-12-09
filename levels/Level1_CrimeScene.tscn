@@ -331,6 +331,12 @@ position = Vector2(28.434143, 79.18887)
 [node name="Control" parent="CanvasLayer" instance=ExtResource("13_vrv86")]
 
 [node name="fibre" parent="." instance=ExtResource("18_nulta")]
+[node name="light_right" type="PointLight2D" parent="."]
+position = Vector2(-407.26422, -207.19131)
+rotation = 0.017453292
+scale = Vector2(2.2322016, 1.8792192)
+energy = 3.49
+texture = ExtResource("9_ow1bj")
 
 [connection signal="area_entered" from="mappieces/door1" to="mappieces/door1" method="_on_area_entered"]
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
