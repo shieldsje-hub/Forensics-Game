@@ -130,6 +130,7 @@ script = ExtResource("10")
 
 [node name="turn lights onc" type="CollisionShape2D" parent="turn lights on"]
 position = Vector2(-138.508, -12.1292)
+scale = Vector2(111.03199, 34.57489)
 shape = SubResource("RectangleShape2D_otmip")
 
 [node name="light_right" type="PointLight2D" parent="."]

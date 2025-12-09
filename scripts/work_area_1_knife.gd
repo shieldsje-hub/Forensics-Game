@@ -11,11 +11,13 @@ func _show_knife():
 	var inv = get_node("/root/inventory")
 
 	# If nothing equipped → reset table image
-	if inv.equipped_item == "" or inv.equipped_item == null:
+	if inv.equipped_item == "" or inv.equipped_item == null or inv.equipped_item == "blood":
+		print(image_display.scale)
 		image_display.texture = load("res://ui/default_table.png") # <— replace with your default image
 		print("No item equipped → resetting table.")
 		image_display.scale.x = 0.125
 		image_display.scale.y = 0.168
+
 		return
 
 	# Must have knife equipped

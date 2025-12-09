@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=29 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="13_vrv86"]
 [ext_resource type="Script" uid="uid://dybkcq7i2shya" path="res://levels/kniferigid.gd" id="14_26cpd"]
 [ext_resource type="Texture2D" uid="uid://csat55gei317t" path="res://levels/knife-removebg-preview (1).png" id="15_lgesj"]
+[ext_resource type="PackedScene" uid="uid://bce12spgiqhhy" path="res://objects/fibre.tscn" id="18_nulta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -328,6 +329,8 @@ position = Vector2(28.434143, 79.18887)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("13_vrv86")]
+
+[node name="fibre" parent="." instance=ExtResource("18_nulta")]
 
 [connection signal="area_entered" from="mappieces/door1" to="mappieces/door1" method="_on_area_entered"]
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]

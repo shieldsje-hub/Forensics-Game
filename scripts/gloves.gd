@@ -2,7 +2,7 @@ extends Node2D
 
 signal collected(item_name)
 var in_evidence
-@export var item_name := "gloves"
+@export var item_name := "fibre"
 
 
 func _on_area_2d_body_entered(body: Node2D):
@@ -12,7 +12,7 @@ func _on_area_2d_body_entered(body: Node2D):
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("pickup") and in_evidence:
 		emit_signal("collected", item_name)
-		print("gloves")
+		print("fibre")
 		if inventory.add_item(item_name):
 			queue_free() # remove item from world
 
