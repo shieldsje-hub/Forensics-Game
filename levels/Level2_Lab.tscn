@@ -1,13 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=15 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_n7h3g"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2_usuyx"]
 [ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3_ap00a"]
-[ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4_56ovf"]
+[ext_resource type="Script" path="res://levels/go_back.gd" id="4_56ovf"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5_wd807"]
 [ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="6_wd807"]
 [ext_resource type="Texture2D" uid="uid://ci6jv82jo2uxj" path="res://ui/default_table.png" id="7_oa2un"]
 [ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="7_xdms6"]
+[ext_resource type="PackedScene" path="res://objects/gloves.tscn" id="6_wd807"]
+[ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="7_ya6rl"]
+[ext_resource type="Script" uid="uid://dpouvqhcjxjgs" path="res://levels/turn_lights_on.gd" id="8_4250f"]
+[ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="9_5dnxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohh8c"]
 size = Vector2(1045.5967, 44.982075)
@@ -43,7 +47,8 @@ func _process(delta: float) -> void:
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oa2un"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdms6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fowqb"]
+size = Vector2(316.6101, 20)
 
 [node name="Game" type="Node2D"]
 
@@ -130,3 +135,39 @@ texture = ExtResource("7_oa2un")
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
 [connection signal="body_entered" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="WorkArea1Knife/Area2D" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+script = ExtResource("7_ya6rl")
+
+[node name="turn lights on" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("8_4250f")
+
+[node name="turn lights onc" type="CollisionShape2D" parent="turn lights on"]
+position = Vector2(-138.50839, -12.129196)
+shape = SubResource("RectangleShape2D_fowqb")
+
+[node name="light_right" type="PointLight2D" parent="."]
+position = Vector2(223.01549, -181.25381)
+rotation = 0.017453292
+scale = Vector2(2.2322016, 1.8792192)
+energy = 3.49
+texture = ExtResource("9_5dnxl")
+
+[node name="light_left" type="PointLight2D" parent="."]
+position = Vector2(-681.79846, -182.71793)
+rotation = 0.017453292
+scale = Vector2(2.2322016, 1.8792192)
+energy = 3.49
+texture = ExtResource("9_5dnxl")
+
+[node name="light_middle" type="PointLight2D" parent="."]
+position = Vector2(-242.96046, -181.66913)
+rotation = 0.017453292
+scale = Vector2(2.2322016, 1.8792192)
+energy = 3.49
+texture = ExtResource("9_5dnxl")
+
+[connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
+[connection signal="body_entered" from="turn lights on" to="turn lights on" method="_on_body_entered"]
