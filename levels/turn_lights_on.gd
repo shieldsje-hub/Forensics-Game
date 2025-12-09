@@ -12,7 +12,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if lights_on:
-		timer -= delta
+		timer -= delta * 2.3
 	timer = clampf(timer, 0.0, 2.0)
 	if timer == 0.0:
 		light_left.energy = lerp(light_left.energy, 3.5, delta)
