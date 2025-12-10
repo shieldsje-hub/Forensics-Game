@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dprw8pd5jxyu5"]
+[gd_scene load_steps=4 format=3 uid="uid://dprw8pd5jxyu5"]
 
 [ext_resource type="Script" uid="uid://jpixckewyxp" path="res://button.gd" id="1_cmhrf"]
 [ext_resource type="Script" uid="uid://cek3c5e8njinn" path="res://options_button.gd" id="2_d2nv2"]
+[ext_resource type="Texture2D" uid="uid://7tg8txna32hm" path="res://maybemainmenuscreenplaceholder.png" id="3_wgsso"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -13,18 +14,27 @@ grow_vertical = 2
 
 [node name="PLAY_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 458.26337
-offset_top = 437.76593
-offset_right = 681.4861
-offset_bottom = 524.82733
+offset_left = 617.8503
+offset_top = 175.69202
+offset_right = 969.9138
+offset_bottom = 251.04065
 text = "Play"
 script = ExtResource("1_cmhrf")
 
 [node name="OPTIONS_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 502.1863
-offset_top = 544.64526
-offset_right = 633.1707
-offset_bottom = 593.6401
+offset_left = 618.50836
+offset_top = 277.93674
+offset_right = 969.91376
+offset_bottom = 335.95847
 text = "options"
 script = ExtResource("2_d2nv2")
+
+[node name="Maybemainmenuscreenplaceholder" type="Sprite2D" parent="."]
+self_modulate = Color(0.62967473, 0.62967473, 0.6296747, 1)
+z_index = -79
+position = Vector2(575.99866, 324.01648)
+scale = Vector2(1.2101007, 1.1191696)
+texture = ExtResource("3_wgsso")
+region_enabled = true
+region_rect = Rect2(0, 0, 952, 579)

@@ -62,14 +62,14 @@ func _process(delta: float) -> void:
 	if zoome:
 		zoom = Vector2(0.4, 0.4)
 	if not zoome:
-		zoom = lerp(zoom, Vector2(1.7, 1.7), delta)
+		zoom = lerp(zoom, Vector2(2.0, 2.0), delta)
 	if Input.is_action_just_pressed(\"zoom\"):
 		if zoome:
 			zoome = false
 		else:
 			zoome = true
-		
-	global_position = lerp(global_position, player.global_position + Vector2(0.0, -90.0), delta * 3)
+	
+	global_position = lerp(global_position, player.global_position + Vector2(0.0, -10.0), delta * 3)
 	#global_position = lerp(global_position, knifespriterigid.global_position, delta * 3)
 "
 
