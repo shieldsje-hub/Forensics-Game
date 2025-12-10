@@ -16,5 +16,10 @@ func _physics_process(delta: float) -> void:
 		if inventory.add_item(item_name):
 			queue_free() # remove item from world
 
+
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	in_evidence = false
+
+func _process(delta: float) -> void:
+	if inventory.has_item("fibre"):
+		queue_free()

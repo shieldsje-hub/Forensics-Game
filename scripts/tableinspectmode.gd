@@ -12,12 +12,14 @@ var aliases := {
 	"knife_tampered": "knife",
 	"knife_bloody": "knife",
 	"gloves": "gloves",
-	"blood": "blood"
+	"blood": "blood",
+	"fibre": "fibre"
 }
 
 # map visible names to textures
 var textures := {
 	"knife": preload("res://ui/knife_clean.png"),
+	"fibre": preload("res://levels/bkvyrdhcar.png"),
 	"gloves": preload("res://levels/download.jpg"),
 	"blood": preload("res://levels/blood_splatter-removebg-preview.png"),
 	"knife_tampered":preload("uid://dtbdugx1y42ov"),
