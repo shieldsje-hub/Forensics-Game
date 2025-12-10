@@ -5,7 +5,7 @@ var in_range := false
 
 func _process(delta):
 	if in_range and Input.is_action_just_pressed("pickup"):
-		_show_knife()
+		get_tree().change_scene_to_file("res://tableinspectmode.tscn")
 
 func _show_knife():
 	var inv = get_node("/root/inventory")

@@ -1,100 +1,106 @@
 extends Node
 
-var items: Array = []
+var items: Array[String] = []
 var max_items := 20
-var equipped_item: String = ""    
+var equipped_item: String = ""
 
-# UI references
-var ui_list = null
-var ui_equipped = null
+var ui_list: VBoxContainer
+var ui_equipped: Label
 
 signal item_added(item_name)
 signal item_equipped(item_name)
 signal item_unequipped()
 
-# --------------------------------------------------
+# ------------------------------------
 # Register UI
-# --------------------------------------------------
-func register_ui(list_node, equipped_label):
+# ------------------------------------
+func register_ui(list_node: VBoxContainer, equipped_label: Label):
 	ui_list = list_node
 	ui_equipped = equipped_label
 	_refresh_ui()
 
-# --------------------------------------------------
+# ------------------------------------
 # ITEM MANAGEMENT
-# --------------------------------------------------
-func add_item(item_name: String) -> bool:
+# ------------------------------------
+func add_item(id: String) -> bool:
 	if items.size() >= max_items:
 		return false
 
-	items.append(item_name)
-	emit_signal("item_added", item_name)
+	items.append(id)
+	emit_signal("item_added", id)
 	_refresh_ui()
 	return true
 
-func remove_item(item_name: String):
-	if item_name in items:
-		items.erase(item_name)
+func remove_item(id: String):
+	if id in items:
+		items.erase(id)
 	_refresh_ui()
 
-func has_item(item_name: String) -> bool:
-	return item_name in items
+func has_item(id: String) -> bool:
+	return id in items
 
-# --------------------------------------------------
+func get_items() -> Array[String]:
+	return items
+
+# ------------------------------------
 # EQUIP SYSTEM
-# --------------------------------------------------
-func equip(item_name: String):
-	if not (item_name in items):
+# ------------------------------------
+func equip(id: String):
+	if not (id in items):
 		return
 
-	if equipped_item == item_name:
-		# UNEQUIP
+	if equipped_item == id:
 		equipped_item = ""
 		emit_signal("item_unequipped")
 	else:
-		# EQUIP
-		equipped_item = item_name
-		emit_signal("item_equipped", item_name)
+		equipped_item = id
+		emit_signal("item_equipped", id)
 
 	_refresh_ui()
-
-func is_equipped(item_name: String) -> bool:
-	return equipped_item == item_name
 
 func unequip():
 	equipped_item = ""
 	emit_signal("item_unequipped")
 	_refresh_ui()
 
-# --------------------------------------------------
+func is_equipped(id: String) -> bool:
+	return equipped_item == id
+
+# ------------------------------------
 # UI
-# --------------------------------------------------
+# ------------------------------------
 func _refresh_ui():
 	if ui_list == null:
 		return
 
-	# clear
 	for c in ui_list.get_children():
 		c.queue_free()
 
-	# rebuild
-	for item in items:
-		var b = Button.new()
-		b.text = item
-		if is_equipped(item):
-			b.text += "   (E)"
+	for internal_name in items:
+		var display_name := get_display_name(internal_name)
 
-		b.connect("pressed", func():
-			equip(item)
-		)
+		var b := Button.new()
+		b.text = display_name + ("  (E)" if is_equipped(internal_name) else "")
+		b.connect("pressed", func(): equip(internal_name))
 		ui_list.add_child(b)
 
-	if ui_equipped:
-		ui_equipped.text = "Equipped: " + (equipped_item if equipped_item != "" else "None")
+	if ui_equipped != null:
+		ui_equipped.text = "Equipped: " + (get_display_name(equipped_item) if equipped_item != "" else "None")
 
+# ------------------------------------
+# ALIASES
+# ------------------------------------
 func get_display_name(internal_name: String) -> String:
-	if has_meta("ui_alias"):
-		var alias = get_meta("ui_alias")
-		if internal_name in alias:
-			return alias[internal_name]
+	if has_meta("aliases"):
+		var alias_map: Dictionary = get_meta("aliases")
+		if internal_name in alias_map:
+			return alias_map[internal_name]
 	return internal_name
+
+func set_alias(internal_name: String, display_name: String):
+	if not has_meta("aliases"):
+		set_meta("aliases", {})
+
+	var alias_map: Dictionary = get_meta("aliases")
+	alias_map[internal_name] = display_name
+	set_meta("aliases", alias_map)

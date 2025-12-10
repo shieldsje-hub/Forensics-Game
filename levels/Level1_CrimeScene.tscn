@@ -331,6 +331,9 @@ position = Vector2(28.434143, 79.18887)
 [node name="Control" parent="CanvasLayer" instance=ExtResource("13_vrv86")]
 
 [node name="fibre" parent="." instance=ExtResource("18_nulta")]
+position = Vector2(-1093, -211.00002)
+scale = Vector2(0.11522402, 0.17608862)
+
 [node name="light_right" type="PointLight2D" parent="."]
 position = Vector2(-407.26422, -207.19131)
 rotation = 0.017453292
