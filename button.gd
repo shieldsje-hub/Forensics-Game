@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if button_pressed:
+	if button_pressed or Input.is_action_just_pressed("gobackmainpls"):
 		PLAY = true
 	if PLAY:
 		get_tree().change_scene_to_file("res://levels/Level2_Lab.tscn")

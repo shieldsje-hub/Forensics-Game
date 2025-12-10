@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://jmokdhd63tvk" path="res://objects/knife.gd" id="1_f3qjk"]
 [ext_resource type="Texture2D" uid="uid://csat55gei317t" path="res://levels/knife-removebg-preview (1).png" id="2_f3qjk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f3qjk"]
-radius = 13.315737
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3qjk"]
+size = Vector2(7.1625295, 20)
 
 [node name="knife" type="Node2D"]
 script = ExtResource("1_f3qjk")
@@ -16,9 +16,9 @@ texture = ExtResource("2_f3qjk")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-24.895384, -75.30009)
+position = Vector2(-25, -75.30009)
 scale = Vector2(6.4223123, 6.4900756)
-shape = SubResource("CircleShape2D_f3qjk")
+shape = SubResource("RectangleShape2D_f3qjk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

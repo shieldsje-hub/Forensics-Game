@@ -104,3 +104,10 @@ func set_alias(internal_name: String, display_name: String):
 	var alias_map: Dictionary = get_meta("aliases")
 	alias_map[internal_name] = display_name
 	set_meta("aliases", alias_map)
+
+func count_item(id: String) -> int:
+	var count := 0
+	for itm in items:
+		if itm == id:
+			count += 1
+	return count

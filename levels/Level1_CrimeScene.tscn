@@ -45,7 +45,7 @@ size = Vector2(894.9469, 424.24542)
 size = Vector2(1066.9056, 215.01323)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3hlq"]
-size = Vector2(186.33998, 107.34003)
+size = Vector2(68, 107.34003)
 
 [sub_resource type="GDScript" id="GDScript_wesik"]
 script/source = "extends Camera2D
@@ -292,7 +292,7 @@ scale = Vector2(0.7, -0.7)
 texture = ExtResource("11_lgesj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mappieces/car go?"]
-position = Vector2(546.7, -95.70001)
+position = Vector2(567, -95.70001)
 shape = SubResource("RectangleShape2D_g3hlq")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -23,7 +23,12 @@ func _on_area_2d_body_exited(body: Node2D):
 func _physics_process(delta):
 	if in_evidence and Input.is_action_just_pressed("pickup"):
 		_collect_once()
+	var inv = get_node("/root/inventory")
 
+	if inv.count_item("blood") >= 4:
+		queue_free() # remove the item so it can't respawn
+
+		
 func _collect_once():
 	if collected_count >= max_collects:
 		return
