@@ -41,7 +41,7 @@ func _show_knife():
 			image_display.texture = load("res://ui/knife_tampered.png")
 			image_display.scale.x = 1
 			image_display.scale.y = 1
-		_:
+		
 			print("Unexpected knife variant!")
 
 
