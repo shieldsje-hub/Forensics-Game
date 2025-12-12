@@ -3,15 +3,15 @@ extends Control
 @onready var big_sprite: Sprite2D = $ItemSprite
 
 var textures := {
-	"knife_clean": preload("uid://dtbdugx1y42ov"),
-	"knife_tampered": preload("uid://dtbdugx1y42ov"),
+	"knife_clean": preload("res://levels/preserved_knife(untampered).png"),
+	"knife_tampered": preload("res://levels/tampered_knife(tampered).png"),
 	"knife_bloody": preload("uid://bawuxx2rqlaa8"),
 	"knife": preload("res://ui/knife_clean.png"),
 	"gloves": preload("res://levels/exitsign.png"),
 	"fibre": preload("res://levels/bkvyrdhcar.png"),
 	"blood": preload("res://ui/vialofblood.png")
 }
-
+ 
 func _ready():
 	var internal_name = inventory.equipped_item
 	_show_item(internal_name)
