@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://ymiejiva1h2a"]
+
+[ext_resource type="Texture2D" uid="uid://qhyx0v1wpbvn" path="res://levels/microscopeview.png" id="1_xtre7"]
+
+[node name="microscope" type="Node2D"]
+
+[node name="Microscopeview" type="Sprite2D" parent="."]
+z_index = 4000
+position = Vector2(599.8374, 337.5575)
+scale = Vector2(2, 2)
+texture = ExtResource("1_xtre7")
+
+[node name="microscopebackground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.7647059)
+z_index = -4000
+position = Vector2(1034.7797, 337.88623)
+scale = Vector2(1.9498212, 1)
+texture = ExtResource("1_xtre7")
