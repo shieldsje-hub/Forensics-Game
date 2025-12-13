@@ -1,6 +1,7 @@
 extends Control
 
 @onready var big_sprite: Sprite2D = $ItemSprite
+var gobak = false
 
 var textures := {
 	"knife_clean": preload("res://levels/preserved_knife(untampered).png"),
@@ -33,5 +34,10 @@ func _show_item(internal_name):
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://tableinspectmode.tscn")
-	
+	gobak = true
+
+func _process(_delta: float) -> void:
+	if gobak == true:
+		get_tree().change_scene_to_file("res://tableinspectmode.tscn")
+	if Input.is_action_just_pressed("gobackmainpls"):
+		gobak = true
