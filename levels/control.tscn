@@ -23,3 +23,13 @@ offset_bottom = 23.0
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
 position = Vector2(577, 324)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 21.0
+offset_right = 41.0
+offset_bottom = 29.0
+text = "back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

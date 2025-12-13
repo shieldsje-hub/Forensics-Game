@@ -5,10 +5,10 @@ extends Control
 var textures := {
 	"knife_clean": preload("res://levels/preserved_knife(untampered).png"),
 	"knife_tampered": preload("res://levels/tampered_knife(tampered).png"),
-	"knife_bloody": preload("uid://bawuxx2rqlaa8"),
+	"knife_bloody": preload("res://levels/bloodied_knife(tampered).png"),
 	"knife": preload("res://ui/knife_clean.png"),
 	"gloves": preload("res://levels/exitsign.png"),
-	"fibre": preload("res://levels/bkvyrdhcar.png"),
+	"fibre": preload("res://levels/slidefiber.png"),
 	"blood": preload("res://ui/vialofblood.png")
 }
  
@@ -30,3 +30,8 @@ func _show_item(internal_name):
 		big_sprite.scale = Vector2(0.5, 0.5)
 	else:
 		big_sprite.scale = Vector2.ONE
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://tableinspectmode.tscn")
+	
