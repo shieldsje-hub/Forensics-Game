@@ -33,6 +33,6 @@ func _on_button_pressed() -> void:
 
 func _process(_delta: float) -> void:
 	if gobak == true:
-		get_tree().change_scene_to_file("res://tableinspectmode.tscn")
+		get_tree().change_scene_to_file("res://levels/microscope.tscn")
 	if Input.is_action_just_pressed("gobackmainpls"):
 		gobak = true

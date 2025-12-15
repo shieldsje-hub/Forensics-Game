@@ -1,17 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=22 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
 [ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3"]
-[ext_resource type="Script" path="res://levels/go_back.gd" id="4"]
+[ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://objects/gloves.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="6"]
 [ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://b4vwnt5uqyhsq" path="res://levels/tablewoodplace.png" id="8_fowqb"]
 [ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="9"]
 [ext_resource type="Script" uid="uid://dpouvqhcjxjgs" path="res://levels/turn_lights_on.gd" id="10"]
 [ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://cbhoaufdwqv1l" path="res://levels/exitsign.png" id="12_fowqb"]
+[ext_resource type="Script" uid="uid://cw3netd6s1inh" path="res://scripts/microscopeinitial.gd" id="13_i7j1t"]
+[ext_resource type="Texture2D" uid="uid://bifich2fhc5g3" path="res://levels/microscope.png" id="14_bl4b1"]
 
 [sub_resource type="RectangleShape2D" id="12"]
 size = Vector2(1045.5967, 44.982075)
@@ -177,7 +179,25 @@ texture = ExtResource("11")
 position = Vector2(-672.39746, -51.264465)
 texture = ExtResource("12_fowqb")
 
+[node name="Microscope" type="Node2D" parent="."]
+position = Vector2(367, -57)
+script = ExtResource("13_i7j1t")
+
+[node name="table" type="Area2D" parent="Microscope"]
+scale = Vector2(9.34514, 5.54593)
+
+[node name="tablec" type="CollisionShape2D" parent="Microscope/table"]
+position = Vector2(2.2471573, -0.5409373)
+scale = Vector2(0.374372, 1.0548595)
+shape = SubResource("RectangleShape2D_fowqb")
+
+[node name="tables" type="Sprite2D" parent="Microscope"]
+scale = Vector2(0.5266592, 0.58489907)
+texture = ExtResource("14_bl4b1")
+
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
 [connection signal="body_entered" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="turn lights on" to="turn lights on" method="_on_body_entered"]
+[connection signal="body_entered" from="Microscope/table" to="Microscope" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Microscope/table" to="Microscope" method="_on_area_2d_body_exited"]

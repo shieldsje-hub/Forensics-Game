@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfo2vpuo1kmtg"]
+
+[ext_resource type="Script" uid="uid://ugy11b0yxq3p" path="res://scripts/microscope.gd" id="1_30hrb"]
+[ext_resource type="Texture2D" uid="uid://dsjh0t0bjcou5" path="res://levels/_4e8efc53-ea49-4da5-8106-e8302b436385.jpg" id="2_uj5j2"]
+[ext_resource type="Texture2D" uid="uid://chgdl1fv7oxj5" path="res://levels/_72ea6320-da5c-4d3f-bac9-7c4895ca1c0d.jpg" id="3_fu5ji"]
+[ext_resource type="Texture2D" uid="uid://cg71cbm8qhjp6" path="res://levels/lightungtitledusethis.png" id="4_f7wbv"]
+[ext_resource type="Script" uid="uid://jpixckewyxp" path="res://button.gd" id="5_ekxyn"]
+
+[node name="Microscopeinspectmode" type="Node2D"]
+script = ExtResource("1_30hrb")
+
+[node name="tablesprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.6052743, 0.6052743, 0.6052743, 1)
+position = Vector2(576.0047, 323.99084)
+scale = Vector2(1, 0.5)
+texture = ExtResource("2_uj5j2")
+
+[node name="concretesprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.48962224, 0.48962224, 0.48962218, 1)
+z_index = -1
+position = Vector2(576.1079, 323.9827)
+scale = Vector2(1.125208, 0.6327846)
+texture = ExtResource("3_fu5ji")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(555.06104, 331.9991)
+scale = Vector2(4.6, 3)
+energy = 10.0
+texture = ExtResource("4_f7wbv")
+
+[node name="Spot1" type="Sprite2D" parent="."]
+position = Vector2(200, 140)
+
+[node name="Button" type="Button" parent="Spot1"]
+offset_right = 8.0
+offset_bottom = 8.0
+action_mode = 0
+
+[node name="Spot2" type="Sprite2D" parent="."]
+position = Vector2(430, 140)
+
+[node name="Button" type="Button" parent="Spot2"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Spot3" type="Sprite2D" parent="."]
+position = Vector2(660, 140)
+
+[node name="Button" type="Button" parent="Spot3"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Spot4" type="Sprite2D" parent="."]
+position = Vector2(890, 140)
+
+[node name="Button" type="Button" parent="Spot4"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Spot5" type="Sprite2D" parent="."]
+position = Vector2(200, 400)
+
+[node name="Button" type="Button" parent="Spot5"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Spot6" type="Sprite2D" parent="."]
+position = Vector2(430, 400)
+
+[node name="Button" type="Button" parent="Spot6"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Spot7" type="Sprite2D" parent="."]
+position = Vector2(660, 400)
+
+[node name="Button" type="Button" parent="Spot7"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Spot8" type="Sprite2D" parent="."]
+position = Vector2(890, 400)
+
+[node name="Button" type="Button" parent="Spot8"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 22.000008
+offset_top = 12.100006
+offset_right = 121.29999
+offset_bottom = 58.600006
+text = "Go Back"
+script = ExtResource("5_ekxyn")

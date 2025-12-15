@@ -15,12 +15,7 @@ var aliases := {
 }
 
 var textures := {
-	"knife": preload("res://ui/knife_clean.png"),
-	"gloves": preload("res://levels/download.jpg"),
-	"blood": preload("res://ui/vialofblood.png"),
-	"knife_clean": preload("uid://dtbdugx1y42ov"),
-	"knife_tampered": preload("uid://dtbdugx1y42ov"),
-	"knife_bloody": preload("uid://bawuxx2rqlaa8")
+	"fibre": preload("res://levels/bkvyrdhcar.png"),
 }
 
 func _ready():
@@ -61,5 +56,5 @@ func _refresh(_x = null):
 
 func _go_to_closeup(internal_name):
 	inventory.equipped_item = internal_name
-	
-	get_tree().change_scene_to_file("res://levels/control.tscn")
+	print("went to closeup")
+	get_tree().change_scene_to_file("res://levels/microscope2.tscn")
