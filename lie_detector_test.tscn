@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://djfn7qxpknt24"]
+[gd_scene load_steps=11 format=3 uid="uid://djfn7qxpknt24"]
 
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="1_1iwux"]
+[ext_resource type="Script" uid="uid://c7dkna4tolrm3" path="res://lie_detector_test.gd" id="1_v5nae"]
 [ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="2_1ymgx"]
 [ext_resource type="Texture2D" uid="uid://daja2qhvpp5p3" path="res://levels/chariar.png" id="3_h16n8"]
 [ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="4_5jyod"]
+[ext_resource type="Script" uid="uid://crx7wa133uiqw" path="res://point_light_2d.gd" id="5_6hmvp"]
+[ext_resource type="Texture2D" uid="uid://di21qhh166vbu" path="res://levels/chef2.png" id="6_v5nae"]
+[ext_resource type="Texture2D" uid="uid://b43o5d0kl50yx" path="res://levels/chef1.png" id="7_cn5hh"]
+[ext_resource type="Texture2D" uid="uid://bvwbdkvunt1po" path="res://levels/chef3.png" id="8_fytmi"]
+[ext_resource type="Texture2D" uid="uid://bwti8xcwt8gbb" path="res://levels/thekid.png" id="9_3v81o"]
 
 [node name="lie detector test" type="Node2D"]
+script = ExtResource("1_v5nae")
 
 [node name="93945Ba817c64e8bBecdEa19e77a95a7" type="Sprite2D" parent="."]
 self_modulate = Color(0.14767182, 0.14767179, 0.14767179, 1)
@@ -32,9 +39,82 @@ scale = Vector2(1.8190738, 1.9204034)
 texture = ExtResource("3_h16n8")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(547.7627, -0.11441803)
+position = Vector2(557.99316, -2.6526756)
 rotation = 0.017453292
-scale = Vector2(4.239134, 9.404245)
-energy = 9.66
+scale = Vector2(4.239134, 5.821076)
+energy = 51.44
 texture = ExtResource("4_5jyod")
 offset = Vector2(-0.17687988, 9.770957)
+script = ExtResource("5_6hmvp")
+
+[node name="Chef2" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.15487596, 0.154876, 0.15487596, 1)
+position = Vector2(572.00385, 226.9997)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("6_v5nae")
+
+[node name="Chef1" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.2231029, 0.2231029, 0.22310287, 1)
+position = Vector2(572.9822, 213.87918)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("7_cn5hh")
+
+[node name="Chef3" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.21230483, 0.21230483, 0.21230483, 1)
+position = Vector2(576.6391, 242.35876)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("8_fytmi")
+
+[node name="Thekid" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.21230483, 0.21230483, 0.21230483, 1)
+position = Vector2(576.45105, 255.86761)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_3v81o")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="suspect1 (chef1)" type="Button" parent="Node2D"]
+offset_left = 81.383545
+offset_top = 57.9926
+offset_right = 189.24261
+offset_bottom = 105.936264
+text = "Suspect 1"
+
+[node name="suspect2 (chef2)" type="Button" parent="Node2D"]
+offset_left = 81.21005
+offset_top = 119.94006
+offset_right = 188.96153
+offset_bottom = 169.20236
+text = "Suspect 2"
+
+[node name="suspect3 (chef3)" type="Button" parent="Node2D"]
+offset_left = 80.875885
+offset_top = 188.75131
+offset_right = 189.42004
+offset_bottom = 239.99423
+text = "Suspect 3"
+
+[node name="suspect4 (the kid)" type="Button" parent="Node2D"]
+offset_left = 80.98779
+offset_top = 256.04218
+offset_right = 189.83511
+offset_bottom = 307.57965
+text = "Suspect 4"
+
+[node name="suspect5 (the waitress)" type="Button" parent="Node2D"]
+offset_left = 82.67116
+offset_top = 320.2847
+offset_right = 191.12546
+offset_bottom = 373.09842
+text = "Suspect 5"
+
+[node name="suspect6 (the clerk)" type="Button" parent="Node2D"]
+offset_left = 82.9241
+offset_top = 385.5335
+offset_right = 192.5589
+offset_bottom = 438.31815
+text = "Suspect 6 "
