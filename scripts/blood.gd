@@ -11,7 +11,7 @@ const TOTAL_REACTIONS := 3
 func _ready():
 
 	# UI
-	hint_text.text = "Drag the blood sample into each serum. They will turn darker if they react, and will be blue to more easily show not reacting"
+	hint_text.text = "Drag the blood sample into each serum. They will turn darker if they react, and will be blue to more easily show not reacting so you dont think the game is broken"
 	finish_button.disabled = true
 	finish_button.pressed.connect(_on_finish_button_pressed)
 
@@ -32,6 +32,7 @@ func _on_finish_button_pressed() -> void:
 	print("Blood typing test finished!")
 	# Optional: add a report item to inventory
 	# Inventory.add_item("blood_report", "res://icons/blood_report.png")
+	gobak = true
 	queue_free()
 
 func _process(_delta: float) -> void:
