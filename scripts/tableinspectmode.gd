@@ -11,17 +11,21 @@ var aliases := {
 	"knife_bloody": "knife",
 	"gloves": "gloves",
 	"blood": "blood",
-	"fibre": "fibre"
+	"fibre": "fibre",
+	"clipboard": "clipboard"
 }
 
 var textures := {
 	"knife": preload("res://ui/knife_clean.png"),
+	"fibre": preload("res://levels/bkvyrdhcar.png"),
 	"gloves": preload("res://levels/download.jpg"),
 	"blood": preload("res://ui/vialofblood.png"),
 	"knife_clean": preload("uid://dtbdugx1y42ov"),
 	"knife_tampered": preload("uid://dtbdugx1y42ov"),
-	"knife_bloody": preload("uid://bawuxx2rqlaa8")
+	"knife_bloody": preload("uid://bawuxx2rqlaa8"),
+	"clipboard": preload("res://ui/maybemainmenuscreenplaceholder.png")
 }
+
 
 func _ready():
 	var inv = get_node("/root/inventory")
@@ -29,6 +33,7 @@ func _ready():
 	inv.connect("item_equipped", _refresh)
 	inv.connect("item_unequipped", _refresh)
 	_refresh()
+
 
 func _refresh(_x = null):
 	var inv = get_node("/root/inventory")
@@ -58,8 +63,8 @@ func _refresh(_x = null):
 
 		index += 1
 
-
 func _go_to_closeup(internal_name):
-	inventory.equipped_item = internal_name
+	var inv = get_node("/root/inventory")
+	inv.equipped_item = internal_name
 	
 	get_tree().change_scene_to_file("res://levels/control.tscn")
