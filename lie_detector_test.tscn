@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djfn7qxpknt24"]
+[gd_scene load_steps=16 format=3 uid="uid://djfn7qxpknt24"]
 
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="1_1iwux"]
 [ext_resource type="Script" uid="uid://c7dkna4tolrm3" path="res://lie_detector_test.gd" id="1_v5nae"]
@@ -16,7 +16,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fytmi"]
 size = Vector2(15.374069, 164.74557)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fytmi"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3v81o"]
+
+[sub_resource type="Gradient" id="Gradient_x2cfm"]
+offsets = PackedFloat32Array(0, 0.047945205, 0.9589041, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="lie detector test" type="Node2D"]
 script = ExtResource("1_v5nae")
@@ -181,12 +185,21 @@ position = Vector2(932.90594, 510.51764)
 texture = ExtResource("12_fytmi")
 
 [node name="followpoint" type="Node2D" parent="."]
-position = Vector2(0, -30)
+z_index = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="followpoint"]
-z_index = 4096
-position = Vector2(1074.4602, 575.2409)
-scale = Vector2(-8.881284, -7.638877)
-texture = SubResource("PlaceholderTexture2D_fytmi")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="followpoint"]
+position = Vector2(1106.846, 573.7651)
+amount = 100
+texture = SubResource("PlaceholderTexture2D_3v81o")
+lifetime = 5.3
+preprocess = 5.3
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_x2cfm")
 
 [node name="linesgohere" type="Node2D" parent="."]

@@ -555,10 +555,11 @@ func polygraph(delta) -> void:
 	lyingfactor = clampf(lyingfactor, -13.0, 0.0)
 	
 		
-	spawnline(delta)
+	#spawnline(delta)
 		
 	
 func spawnline(delta) -> void:
+	
 	spawncount += 1
 	
 	polylineline.name = "polylineline" + str(spawncount)
