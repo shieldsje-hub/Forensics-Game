@@ -89,6 +89,7 @@ func buttonstuff() -> void:
 	if done6:
 		suspect_6b.disabled = true
 	
+	
 	if suspect_1b.button_pressed == true:
 		chef_1.visible = true
 		chef_2.visible = false
@@ -103,6 +104,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
+		lyingfactor = -4.0
 	if suspect_2b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = true
@@ -117,6 +119,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
+		lyingfactor = -6.0
 	if suspect_3b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = false
@@ -131,6 +134,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
+		lyingfactor = -7.0
 	if suspect_4b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = false
@@ -145,6 +149,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
+		lyingfactor = -6.0
 	if suspect_5b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = false
@@ -224,37 +229,37 @@ func questionstuff() -> void:
 			question_2.text = "do you have an alibi?"
 			question_3.text = "what colour are apples."
 		if questionstage == 2:
-			question_1.text = "how do you know the owner?"
+			question_1.text = "how close were you with your dad?"
 			question_2.text = "have you had any arguments at the workplace lately?"
-			question_3.text = "how many parents do you have?"
+			question_3.text = "do you have any pets?"
 		if questionstage == 3:
-			question_1.text = "what's 9 + 10?"
+			question_1.text = "we can help bring your fathers murderer to justice, you just need to tell us everything you know."
 			question_2.text = "do you have any idea who the murderer could be?"
 			question_3.text = "we know it's you, just confess."
 	elif questioning and suspect5:
 		if questionstage == 1:
 			question_1.text = "where were you at the time of the murder?"
 			question_2.text = "do you have an alibi?"
-			question_3.text = "what colour are apples."
+			question_3.text = "you live with your family?"
 		if questionstage == 2:
 			question_1.text = "how do you know the owner?"
 			question_2.text = "have you had any arguments at the workplace lately?"
-			question_3.text = "how many parents do you have?"
+			question_3.text = "any pets?"
 		if questionstage == 3:
-			question_1.text = "what's 9 + 10?"
+			question_1.text = "do you know who was still working in the restaurant when you left?"
 			question_2.text = "do you have any idea who the murderer could be?"
 			question_3.text = "we know it's you, just confess."
 	elif questioning and suspect6:
 		if questionstage == 1:
 			question_1.text = "where were you at the time of the murder?"
 			question_2.text = "do you have an alibi?"
-			question_3.text = "what colour are apples."
+			question_3.text = "what colour are oranges?"
 		if questionstage == 2:
 			question_1.text = "how do you know the owner?"
 			question_2.text = "have you had any arguments at the workplace lately?"
-			question_3.text = "how many parents do you have?"
+			question_3.text = "do you have any pets?"
 		if questionstage == 3:
-			question_1.text = "what's 9 + 10?"
+			question_1.text = "how long have you worked here?"
 			question_2.text = "do you have any idea who the murderer could be?"
 			question_3.text = "we know it's you, just confess."
 func miscstuff(delta) -> void:
@@ -270,18 +275,21 @@ func miscstuff(delta) -> void:
 			chef_1.visible = false
 			chef_2.visible = true
 			done11 = true
+			lyingfactor = -6.0
 		elif done2 and not done22:
 			suspect2 = false
 			suspect3 = true
 			chef_2.visible = false
 			chef_3.visible = true
 			done22 = true
+			lyingfactor = -7.0
 		elif done3 and not done33:
 			suspect3 = false
 			suspect4 = true
 			chef_3.visible = false
 			thekid.visible = true
 			done33 = true
+			lyingfactor = -6.0
 		elif done4 and not done44:
 			suspect4 = false
 			suspect5 = true
@@ -339,6 +347,8 @@ func theanswers() -> void:
 					talking = true #what where you doing
 					label.text = "uh... red."
 					lyingfactor = -5.0
+					
+					#baseline: 4.0
 #############################suspect 2 stage 1 questions############################################################################################################
 			elif suspect2:
 				if question_1.button_pressed == true:
@@ -353,51 +363,65 @@ func theanswers() -> void:
 					talking = true
 					label.text = "at toothirty..."
 					lyingfactor = -6.0
+					
+				#baseline : 6.0
 ###############################suspect 3 stage 1 questions##########################################################################################################
 			elif suspect3:
 				if question_1.button_pressed == true:
 					talking = true
 					label.text = "I went home early that day, (owner) said I was just in the way"
-					lyingfactor = -7.0
+					lyingfactor = -11.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I was sent home early by (owner). my sister was home at the time, you can ask her."
+					lyingfactor = -7.0
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I swear I didn't do anything illegal, I'm a law abiding citizen!"
+					lyingfactor = -13.0
+				#baseline 7.0
 #################################suspect 4 stage 1 questions########################################################################################################
 			elif suspect4:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I was at chef school, my... my Father always wanted me to take over. not like this though... not like this."
+					lyingfactor = -9.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "yeah, I was at chef school learning to cook, you can ask my teacher."
+					lyingfactor = -6.0
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "are you kidding me? you brought me here after my father died just to question me about apples?"
+					lyingfactor = -10.0
+					
+				#baseline: 6.0
 ##################################suspect 5 stage 1 questions#######################################################################################################
 			elif suspect5:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "after I left work I head straight home, I live with my dad so he can vouch for me."
+					lyingfactor = -4.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I was home with my dad after work, you can ask him yourself"
+					lyingfactor = -4.5
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "just my dad, my mother died in a car crash a couple years ago."
+					lyingfactor = -7.0
+				#baseline: 3.0
 ####################################suspect 6 stage 1 questions#####################################################################################################
 			elif suspect6:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "at home"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I left (owner) and (chef 2) to lockup after my shift was over, went home after that but I live alone, so no."
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "they're orange, like their name."
 ###########################stage######################################################################################
 #############################2############################################################################################################
 		elif questionstage == 2:

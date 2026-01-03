@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcfas58y7fp25"]
 
 [ext_resource type="Script" uid="uid://lgtaln7e6yna" path="res://player/player_control.gd" id="1_rkbax"]
-[ext_resource type="Texture2D" uid="uid://b2kfwenexdhvn" path="res://levels/bananadetective.png" id="2_rkbax"]
+[ext_resource type="Texture2D" uid="uid://b86gj8penuq7w" path="res://detectivesprite.png" id="2_rkbax"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw30f"]
-size = Vector2(68.3202, 111.86134)
+size = Vector2(61.43064, 98.290695)
 
 [node name="player" type="Node2D"]
 
@@ -14,11 +14,13 @@ collision_mask = 7
 script = ExtResource("1_rkbax")
 
 [node name="players" type="Sprite2D" parent="player control"]
-position = Vector2(0.28909302, -0.66973877)
-scale = Vector2(0.3, 0.3)
+position = Vector2(0.5687523, 8.949577)
+scale = Vector2(0.29755217, 0.3)
 texture = ExtResource("2_rkbax")
-offset = Vector2(-103.34131, 28.107018)
+offset = Vector2(-26.590576, -0.26094818)
+region_enabled = true
+region_rect = Rect2(344, 152, 224, 344)
 
 [node name="playerc" type="CollisionShape2D" parent="player control"]
-position = Vector2(0.004562378, 0.3540764)
+position = Vector2(-1.7368507, 7.1393986)
 shape = SubResource("RectangleShape2D_yw30f")
