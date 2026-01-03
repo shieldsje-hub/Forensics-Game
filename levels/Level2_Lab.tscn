@@ -1,12 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=28 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
 [ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3"]
 [ext_resource type="Texture2D" uid="uid://ck05cmo431yqw" path="res://doorsprite.png" id="3_5o2pl"]
-[ext_resource type="Script" path="res://levels/go_back.gd" id="4"]
+[ext_resource type="Script" uid="uid://dt4ffnrifx06y" path="res://levels/door1.gd" id="3_60t8u"]
+[ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://objects/gloves.tscn" id="6"]
+[ext_resource type="Script" uid="uid://u536eatcehys" path="res://levels/door2.gd" id="5_tp7qs"]
 [ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://b4vwnt5uqyhsq" path="res://levels/tablewoodplace.png" id="8_fowqb"]
 [ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="9"]
@@ -15,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cbhoaufdwqv1l" path="res://levels/exitsign.png" id="12_fowqb"]
 [ext_resource type="Script" uid="uid://cw3netd6s1inh" path="res://scripts/microscopeinitial.gd" id="13_i7j1t"]
 [ext_resource type="Texture2D" uid="uid://bifich2fhc5g3" path="res://levels/microscope.png" id="14_bl4b1"]
-[ext_resource type="Script" path="res://levels/shelf.gd" id="15_bl4b1"]
+[ext_resource type="Script" uid="uid://wsqdq4dad3c5" path="res://levels/shelf.gd" id="15_bl4b1"]
 
 [sub_resource type="RectangleShape2D" id="12"]
 size = Vector2(1045.5967, 44.982075)
@@ -25,6 +26,10 @@ size = Vector2(1045.5156, 44.90625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7j1t"]
 size = Vector2(53.65776, 292.7514)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cojw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibhnc"]
 
 [sub_resource type="GDScript" id="15"]
 script/source = "extends Camera2D
@@ -98,13 +103,30 @@ region_rect = Rect2(0, 232, 216, 640)
 position = Vector2(571.0008, -99.94602)
 shape = SubResource("RectangleShape2D_i7j1t")
 
-[node name="Doorsprite" type="Sprite2D" parent="mappiecesbutlab/labwall1"]
+[node name="Area2D" type="Area2D" parent="mappiecesbutlab/labwall1"]
+script = ExtResource("3_60t8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mappiecesbutlab/labwall1/Area2D"]
+position = Vector2(-564.99994, -101.00001)
+scale = Vector2(6.5533023, 11.679432)
+shape = SubResource("RectangleShape2D_8cojw")
+
+[node name="Doorsprite" type="Sprite2D" parent="mappiecesbutlab/labwall1/Area2D"]
 modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
 position = Vector2(-568.0608, -81.90117)
 scale = Vector2(0.4, 0.3968038)
 texture = ExtResource("3_5o2pl")
 
-[node name="Doorsprite2" type="Sprite2D" parent="mappiecesbutlab/labwall1"]
+[node name="Area2D2" type="Area2D" parent="mappiecesbutlab/labwall1"]
+position = Vector2(0, -9)
+script = ExtResource("5_tp7qs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mappiecesbutlab/labwall1/Area2D2"]
+position = Vector2(444, -94)
+scale = Vector2(7.1530633, 7.1770434)
+shape = SubResource("RectangleShape2D_ibhnc")
+
+[node name="Doorsprite2" type="Sprite2D" parent="mappiecesbutlab/labwall1/Area2D2"]
 modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
 position = Vector2(454.3142, -81.90117)
 scale = Vector2(0.42845058, 0.3968038)
@@ -138,7 +160,7 @@ shape = SubResource("RectangleShape2D_5dnxl")
 [node name="Control" parent="CanvasLayer" instance=ExtResource("5")]
 
 [node name="WorkArea1Knife" type="Node2D" parent="."]
-position = Vector2(130, -58)
+position = Vector2(114, -63)
 script = ExtResource("8")
 
 [node name="table" type="Area2D" parent="WorkArea1Knife"]
@@ -220,6 +242,10 @@ shape = SubResource("RectangleShape2D_5o2pl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shelf"]
 
+[connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D" to="mappiecesbutlab/labwall1/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D" to="mappiecesbutlab/labwall1/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_entered"]
+[connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_exited"]
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
 [connection signal="body_entered" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
