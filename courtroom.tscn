@@ -61,6 +61,7 @@ offset_left = 676.23193
 offset_top = 144.96674
 offset_right = 774.92444
 offset_bottom = 203.34433
+action_mode = 0
 text = "Suspect 5"
 
 [node name="suspect 6" type="Button" parent="."]
