@@ -558,14 +558,10 @@ func polygraph(delta) -> void:
 	#spawnline(delta)
 		
 	
-func spawnline(delta) -> void:
+func spawnline(_delta) -> void:
 	
 	spawncount += 1
 	
 	polylineline.name = "polylineline" + str(spawncount)
 	polylineline.global_position = followpoint_sprite2d.global_position
 	add_child(polylineline)
-	
-		
-		
-		

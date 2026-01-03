@@ -40,8 +40,6 @@ func _on_body_exited(body: Node2D) -> void:
 		
 		#sprite2.scale.y = 0.092
 
-
-
 func _on_door_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		work2 = true

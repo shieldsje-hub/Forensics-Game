@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if in_range and Input.is_action_just_pressed("pickup"):
 		get_tree().change_scene_to_file("res://shelf.tscn")
 		

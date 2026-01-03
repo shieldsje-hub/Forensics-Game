@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=23 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
 [ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3"]
 [ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://vlvmmc86w5yq" path="res://objects/gloves.tscn" id="6"]
 [ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://b4vwnt5uqyhsq" path="res://levels/tablewoodplace.png" id="8_fowqb"]
 [ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="9"]
@@ -119,9 +118,6 @@ script = ExtResource("4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Go back"]
 scale = Vector2(8.08755, 14.5749)
 shape = SubResource("RectangleShape2D_5dnxl")
-
-[node name="gloves" parent="." instance=ExtResource("6")]
-position = Vector2(-378, -95)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

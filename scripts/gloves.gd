@@ -9,11 +9,11 @@ func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		in_evidence = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if inventory.has_item("gloves"):
 		queue_free()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pickup") and in_evidence:
 		emit_signal("collected", item_name)
 		print("gloves")
@@ -22,5 +22,5 @@ func _physics_process(delta: float) -> void:
 		if inventory.has_item("gloves"):
 			queue_free()
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_exited(_body: Node2D) -> void:
 	in_evidence = false
