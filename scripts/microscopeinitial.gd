@@ -3,7 +3,7 @@ extends Node2D
 @onready var image_display := $Sprite2D
 var in_range := false
 
-func _process(delta):
+func _process(_delta):
 	if in_range and Input.is_action_just_pressed("pickup"):
 		print("went to microscope")
 		get_tree().change_scene_to_file("res://levels/microscope.tscn")

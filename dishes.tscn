@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b05qb6fd7cahv"]
+
+[ext_resource type="Texture2D" uid="uid://h4q61ur2c8di" path="res://icon.svg" id="1_fehs5"]
+[ext_resource type="Script" uid="uid://bk6dmod7uo5wx" path="res://dishes.gd" id="1_phmrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phmrg"]
+
+[node name="Dishes" type="Node2D"]
+script = ExtResource("1_phmrg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_phmrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.16895325, 0.15858877)
+texture = ExtResource("1_fehs5")

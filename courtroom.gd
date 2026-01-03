@@ -83,17 +83,21 @@ func buttons() ->void:
 		label.text = "What evidence will you use to 
 		prove " + suspectselected + " is guilty?"
 		label.add_theme_font_size_override("font_size", 50)
-		label.position.x = 160.0
-		knife.visible = true
-		knife.disabled = false
+		label.position.x = 170.0
+		if inventory.has_item("knife"):
+			knife.visible = true
+			knife.disabled = false
 		alibi.visible = true
 		alibi.disabled = false
+		#if inventory.has_item("dishes"):
 		dishes.visible = true
 		dishes.disabled = false
-		fiber.visible = true
-		fiber.disabled = false
-		blood.visible = true
-		blood.disabled = false
+		if inventory.has_item("fiber"):
+			fiber.visible = true
+			fiber.disabled = false
+		if inventory.has_item("blood"):
+			blood.visible = true
+			blood.disabled = false
 		
 	
 		

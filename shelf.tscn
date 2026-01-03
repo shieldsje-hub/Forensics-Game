@@ -21,6 +21,7 @@ script = ExtResource("1_0edba")
 texture = ExtResource("2_7o7sa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="glovez"]
+scale = Vector2(7.835544, 7.8415813)
 shape = SubResource("RectangleShape2D_jgb4e")
 
 [node name="vialz" type="Area2D" parent="."]
@@ -28,9 +29,51 @@ position = Vector2(754, 288)
 script = ExtResource("2_aw007")
 
 [node name="Sprite2D" type="Sprite2D" parent="vialz"]
+position = Vector2(-108.000015, -13)
+scale = Vector2(0.7204415, 0.6728193)
 texture = ExtResource("4_xng2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vialz"]
+scale = Vector2(6.327071, 10.380083)
 shape = SubResource("CapsuleShape2D_0edba")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="vialz2" type="Area2D" parent="."]
+position = Vector2(941, 288)
+script = ExtResource("2_aw007")
+
+[node name="Sprite2D" type="Sprite2D" parent="vialz2"]
+position = Vector2(-108.000015, -13)
+scale = Vector2(0.7204415, 0.6728193)
+texture = ExtResource("4_xng2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vialz2"]
+scale = Vector2(6.327071, 10.380083)
+shape = SubResource("CapsuleShape2D_0edba")
+
+[node name="vialz3" type="Area2D" parent="."]
+position = Vector2(605, 281)
+script = ExtResource("2_aw007")
+
+[node name="Sprite2D" type="Sprite2D" parent="vialz3"]
+position = Vector2(-108.000015, -13)
+scale = Vector2(0.7204415, 0.6728193)
+texture = ExtResource("4_xng2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vialz3"]
+scale = Vector2(6.327071, 10.380083)
+shape = SubResource("CapsuleShape2D_0edba")
+
+[node name="vialz4" type="Area2D" parent="."]
+position = Vector2(1091, 292)
+script = ExtResource("2_aw007")
+
+[node name="Sprite2D" type="Sprite2D" parent="vialz4"]
+position = Vector2(-108.000015, -13)
+scale = Vector2(0.7204415, 0.6728193)
+texture = ExtResource("4_xng2s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vialz4"]
+scale = Vector2(6.327071, 10.380083)
+shape = SubResource("CapsuleShape2D_0edba")
