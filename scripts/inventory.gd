@@ -11,6 +11,20 @@ signal item_added(item_name)
 signal item_equipped(item_name)
 signal item_unequipped()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("secret"):
+		inventory.add_item("knife_clean")
+		inventory.add_item("blood")
+		inventory.add_item("vial")
+		inventory.add_item("gloves")
+		inventory.add_item("fibre")
+		inventory.add_item("Suspect 1 alibi")
+		inventory.add_item("Suspect 2 alibi")
+		inventory.add_item("Suspect 3 alibi")
+		inventory.add_item("Suspect 4 alibi")
+		inventory.add_item("Suspect 5 alibi")
+		inventory.add_item("Suspect 6 alibi")
+
 # ------------------------------------
 # Register UI
 # ------------------------------------
