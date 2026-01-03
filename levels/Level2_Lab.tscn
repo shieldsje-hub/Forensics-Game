@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=24 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cbhoaufdwqv1l" path="res://levels/exitsign.png" id="12_fowqb"]
 [ext_resource type="Script" uid="uid://cw3netd6s1inh" path="res://scripts/microscopeinitial.gd" id="13_i7j1t"]
 [ext_resource type="Texture2D" uid="uid://bifich2fhc5g3" path="res://levels/microscope.png" id="14_bl4b1"]
+[ext_resource type="Script" uid="uid://wsqdq4dad3c5" path="res://levels/shelf.gd" id="15_bl4b1"]
 
 [sub_resource type="RectangleShape2D" id="12"]
 size = Vector2(1045.5967, 44.982075)
@@ -42,6 +43,8 @@ func _process(delta):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fowqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otmip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o2pl"]
 
 [node name="Game" type="Node2D"]
 
@@ -195,9 +198,22 @@ shape = SubResource("RectangleShape2D_fowqb")
 scale = Vector2(0.5266592, 0.58489907)
 texture = ExtResource("14_bl4b1")
 
+[node name="Shelf" type="Node2D" parent="."]
+position = Vector2(-88, -79)
+script = ExtResource("15_bl4b1")
+
+[node name="Area2D" type="Area2D" parent="Shelf"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/Area2D"]
+shape = SubResource("RectangleShape2D_5o2pl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shelf"]
+
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
 [connection signal="body_entered" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="turn lights on" to="turn lights on" method="_on_body_entered"]
 [connection signal="body_entered" from="Microscope/table" to="Microscope" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Microscope/table" to="Microscope" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Shelf/Area2D" to="Shelf" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Shelf/Area2D" to="Shelf" method="_on_area_2d_body_exited"]

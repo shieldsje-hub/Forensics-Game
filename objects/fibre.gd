@@ -9,17 +9,16 @@ func _on_area_2d_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		in_evidence = true
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	if Input.is_action_just_pressed("pickup") and in_evidence:
-		emit_signal("collected", item_name)
-		print("fibre")
-		if inventory.add_item(item_name):
-			queue_free() # remove item from world
+		var inv = get_node("/root/inventory")
 
+		var final_name := ""
+		if inv.is_equipped("gloves"):
+			final_name = "fibre_clean"
+		else:
+			final_name = "fibre_tampered"
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	in_evidence = false
-
-func _process(delta: float) -> void:
-	if inventory.has_item("fibre"):
-		queue_free()
+		if inv.add_item(final_name):
+			inv.set_alias(final_name, "fibre")  # <— makes UI show “knife”
+			queue_free()

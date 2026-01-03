@@ -4,43 +4,59 @@ signal item_collected(item_name)
 
 @export var item_name := "blood"
 @export var max_collects := 4
+@export var required_item := "vial"   # <-- NEW
 
 var in_evidence := false
-var collected_count := 0   # <-- different name so no conflict!
-var sprite
+var collected_count := 0
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var inventory = get_node("/root/inventory")
 
 func _ready():
-	sprite = $Sprite2D   # or whatever your sprite node is
+	print("BloodSample ready")
 	_update_fade()
 
-func _on_area_2d_body_entered(body: Node2D):
+func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		in_evidence = true
+		print("Player entered blood area")
 
-func _on_area_2d_body_exited(body: Node2D):
-	in_evidence = false
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("player"):
+		in_evidence = false
+		print("Player left blood area")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if in_evidence and Input.is_action_just_pressed("pickup"):
-		_collect_once()
-	var inv = get_node("/root/inventory")
+		_try_collect()
 
-	if inv.count_item("blood") >= 4:
-		queue_free() # remove the item so it can't respawn
-
-		
-func _collect_once():
+	# safety cleanup
 	if collected_count >= max_collects:
+		queue_free()
+
+func _try_collect():
+	print("Attempting blood collection...")
+
+	if collected_count >= max_collects:
+		print("Blood already fully collected")
 		return
-		
-	collected_count += 1
-	emit_signal("item_collected", item_name)
-	print("Collected blood piece:", collected_count)
 
-	_update_fade()
+	if not inventory.has_item(required_item):
+		print("❌ No vial available — cannot collect blood")
+		return
+
+	# consume vial
+	inventory.remove_item(required_item)
+	print("✔ Vial consumed")
+
+	collected_count += 1
 	inventory.add_item(item_name)
+	emit_signal("item_collected", item_name)
+
+	print("Collected blood piece:", collected_count)
+	_update_fade()
 
 	if collected_count >= max_collects:
+		print("Blood sample exhausted")
 		queue_free()
 
 func _update_fade():

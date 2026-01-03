@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 GameManager="*res://scripts/GameManager.gd"
 inventory="*res://scripts/inventory.gd"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [global_group]
 
 player="add player here"
