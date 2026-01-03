@@ -87,11 +87,12 @@ func buttons() ->void:
 		if inventory.has_item("knife"):
 			knife.visible = true
 			knife.disabled = false
-		alibi.visible = true
-		alibi.disabled = false
-		#if inventory.has_item("dishes"):
-		dishes.visible = true
-		dishes.disabled = false
+		if (inventory.has_item("alibi1") and suspect1select) or (inventory.has_item("alibi2") and suspect2select) or (inventory.has_item("alibi3") and suspect3select) or (inventory.has_item("alibi4") and suspect4select) or (inventory.has_item("alibi5") and suspect5select) or (inventory.has_item("alibi6") and suspect6select):
+			alibi.visible = true
+			alibi.disabled = false
+		if inventory.has_item("dishes"):
+			dishes.visible = true
+			dishes.disabled = false
 		if inventory.has_item("fiber"):
 			fiber.visible = true
 			fiber.disabled = false
