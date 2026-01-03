@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=29 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cw3netd6s1inh" path="res://scripts/microscopeinitial.gd" id="13_i7j1t"]
 [ext_resource type="Texture2D" uid="uid://bifich2fhc5g3" path="res://levels/microscope.png" id="14_bl4b1"]
 [ext_resource type="Script" uid="uid://wsqdq4dad3c5" path="res://levels/shelf.gd" id="15_bl4b1"]
+[ext_resource type="Texture2D" uid="uid://dn6cdpovh03b3" path="res://levels/sleflh.png" id="18_tp7qs"]
 
 [sub_resource type="RectangleShape2D" id="12"]
 size = Vector2(1045.5967, 44.982075)
@@ -238,9 +239,14 @@ script = ExtResource("15_bl4b1")
 [node name="Area2D" type="Area2D" parent="Shelf"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf/Area2D"]
+position = Vector2(11.000001, 6.000001)
+scale = Vector2(3.0233736, 6.8434305)
 shape = SubResource("RectangleShape2D_5o2pl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shelf"]
+position = Vector2(-1.999999, -11.999996)
+scale = Vector2(0.26806113, 0.35389525)
+texture = ExtResource("18_tp7qs")
 
 [connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D" to="mappiecesbutlab/labwall1/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D" to="mappiecesbutlab/labwall1/Area2D" method="_on_body_exited"]

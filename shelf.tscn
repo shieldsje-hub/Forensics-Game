@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://eksn48y4sh2i" path="res://glovez.gd" id="1_0edba"]
 [ext_resource type="Script" uid="uid://dbke7170lj56p" path="res://shelf.gd" id="1_xng2s"]
-[ext_resource type="Texture2D" uid="uid://hnvd56pxr5rl" path="res://levels/download.jpg" id="2_7o7sa"]
 [ext_resource type="Script" uid="uid://e0gjfb3dl8ek" path="res://vialz.gd" id="2_aw007"]
+[ext_resource type="Texture2D" uid="uid://dxfbg1jls7l8a" path="res://levels/glovebox.png" id="3_xng2s"]
 [ext_resource type="Texture2D" uid="uid://b5hirkjs0l56k" path="res://levels/bloodtestserum.png" id="4_xng2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgb4e"]
@@ -14,18 +14,22 @@
 script = ExtResource("1_xng2s")
 
 [node name="glovez" type="Area2D" parent="."]
-position = Vector2(390, 272)
+position = Vector2(358, 144)
 script = ExtResource("1_0edba")
 
 [node name="Sprite2D" type="Sprite2D" parent="glovez"]
-texture = ExtResource("2_7o7sa")
+position = Vector2(-16.00003, 104)
+scale = Vector2(3.6338398, 3.1525955)
+texture = ExtResource("3_xng2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="glovez"]
-scale = Vector2(7.835544, 7.8415813)
+position = Vector2(22, 46.999996)
+scale = Vector2(37.03351, 18.154362)
 shape = SubResource("RectangleShape2D_jgb4e")
 
 [node name="vialz" type="Area2D" parent="."]
-position = Vector2(754, 288)
+position = Vector2(689, 525)
+scale = Vector2(0.702488, 0.68909127)
 script = ExtResource("2_aw007")
 
 [node name="Sprite2D" type="Sprite2D" parent="vialz"]
@@ -38,9 +42,12 @@ scale = Vector2(6.327071, 10.380083)
 shape = SubResource("CapsuleShape2D_0edba")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(27, 196)
+scale = Vector2(0.702488, 0.68909127)
 
 [node name="vialz2" type="Area2D" parent="."]
-position = Vector2(941, 288)
+position = Vector2(876, 525)
+scale = Vector2(0.702488, 0.68909127)
 script = ExtResource("2_aw007")
 
 [node name="Sprite2D" type="Sprite2D" parent="vialz2"]
@@ -53,7 +60,8 @@ scale = Vector2(6.327071, 10.380083)
 shape = SubResource("CapsuleShape2D_0edba")
 
 [node name="vialz3" type="Area2D" parent="."]
-position = Vector2(605, 281)
+position = Vector2(540, 518)
+scale = Vector2(0.702488, 0.68909127)
 script = ExtResource("2_aw007")
 
 [node name="Sprite2D" type="Sprite2D" parent="vialz3"]
@@ -66,7 +74,8 @@ scale = Vector2(6.327071, 10.380083)
 shape = SubResource("CapsuleShape2D_0edba")
 
 [node name="vialz4" type="Area2D" parent="."]
-position = Vector2(1091, 292)
+position = Vector2(1026, 529)
+scale = Vector2(0.702488, 0.68909127)
 script = ExtResource("2_aw007")
 
 [node name="Sprite2D" type="Sprite2D" parent="vialz4"]
