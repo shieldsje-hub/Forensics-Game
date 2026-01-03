@@ -346,12 +346,14 @@ func theanswers() -> void:
 					talking = true #where were you
 					label.text = "I Didn't go to work that day. I took a sick day and spent it at my grandmas, you can ask her yourself."
 					lyingfactor = -5.0
-					inventory.add_item(str(alibi1))
+					if not inventory.add_item(str(alibi1)):
+						inventory.add_item(str(alibi1))
 				elif question_2.button_pressed == true:
 					talking = true #alibi?
 					label.text = "yes, I was at my grandmothers house, I was home sick, you can ask her if you let me contact her."
 					lyingfactor = -4.0
-					inventory.add_item(str(alibi1))
+					if not inventory.add_item(str(alibi1)):
+						inventory.add_item(str(alibi1))
 				elif question_3.button_pressed == true:
 					talking = true #what where you doing
 					label.text = "uh... red."
@@ -364,12 +366,14 @@ func theanswers() -> void:
 					talking = true
 					label.text = "oh I was at the movies, left right after work to catch up with some old friends."
 					lyingfactor = -7.0
-					inventory.add_item(str(alibi2))
+					if not inventory.add_item(str(alibi2)):
+						inventory.add_item(str(alibi2))
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "yeah, I went to the movies after work, left (the clerk) and (owner) to lock up."
 					lyingfactor = -8.0
-					inventory.add_item(str(alibi2))
+					if not inventory.add_item(str(alibi2)):
+						inventory.add_item(str(alibi2))
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "at toothirty..."
@@ -382,12 +386,14 @@ func theanswers() -> void:
 					talking = true
 					label.text = "I went home early that day, (owner) said I was just in the way"
 					lyingfactor = -11.0
-					inventory.add_item(str(alibi3))
+					if not inventory.add_item(str(alibi3)):
+						inventory.add_item(str(alibi3))
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "I was sent home early by (owner). my sister was home at the time, you can ask her."
 					lyingfactor = -7.0
-					inventory.add_item(str(alibi3))
+					if not inventory.add_item(str(alibi3)):
+						inventory.add_item(str(alibi3))
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "I swear I didn't do anything illegal, I'm a law abiding citizen!"
@@ -399,12 +405,14 @@ func theanswers() -> void:
 					talking = true
 					label.text = "I was at chef school, my... my Father always wanted me to take over. not like this though... not like this."
 					lyingfactor = -9.0
-					inventory.add_item(str(alibi4))
+					if not inventory.add_item(str(alibi4)):
+						inventory.add_item(str(alibi4))
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "yeah, I was at chef school learning to cook, you can ask my teacher."
 					lyingfactor = -6.0
-					inventory.add_item(str(alibi4))
+					if not inventory.add_item(str(alibi4)):
+						inventory.add_item(str(alibi4))
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "are you kidding me? you brought me here after my father died just to question me about apples?"
@@ -417,12 +425,14 @@ func theanswers() -> void:
 					talking = true
 					label.text = "after I left work I head straight home, I live with my dad so he can vouch for me."
 					lyingfactor = -4.0
-					inventory.add_item(str(alibi5))
+					if not inventory.add_item(str(alibi5)):
+						inventory.add_item(str(alibi5))
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "I was home with my dad after work, you can ask him yourself"
 					lyingfactor = -4.5
-					inventory.add_item(str(alibi5))
+					if not inventory.add_item(str(alibi5)):
+						inventory.add_item(str(alibi5))
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "just my dad, my mother died in a car crash a couple years ago."
@@ -433,11 +443,13 @@ func theanswers() -> void:
 				if question_1.button_pressed == true:
 					talking = true
 					label.text = "at home"
-					inventory.add_item(str(alibi6))
+					if not inventory.add_item(str(alibi6)):
+						inventory.add_item(str(alibi6))
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "I left (owner) and (chef 2) to lockup after my shift was over, went home after that but I live alone, so no."
-					inventory.add_item(str(alibi6))
+					if not inventory.add_item(str(alibi6)):
+						inventory.add_item(str(alibi6))
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "they're orange, like their name."
@@ -599,8 +611,6 @@ func polygraph(delta) -> void:
 	
 		
 	#spawnline(delta)
-		
-	
 func spawnline(_delta) -> void:
 	
 	spawncount += 1

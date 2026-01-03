@@ -12,8 +12,11 @@ extends Node2D
 @onready var dishes: Button = $evidence/dishes
 @onready var blood: Button = $evidence/blood
 @onready var label_2: Label = $Label2
-
-var winpercentage = float(50.0)
+@onready var finish: Button = $finish
+var win = bool(false)
+var lose = bool(false)
+var evidencestart = bool(false)
+var winpercentage = float(0.0)
 var suspect1select = bool(false)
 var suspect2select = bool(false)
 var suspect3select = bool(false)
@@ -30,16 +33,37 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if finish.button_pressed:
+		if randf_range(0.0, 100.0) <= winpercentage:
+			if suspect2select:
+				talking = true
+				label.text = "You won! the murderer was proven guilty!"
+				label.visible_ratio = 0.0
+			else:
+				talking = true
+				label.text = "you won the court case! but sent an innocent citizen to jail..."
+				label.visible_ratio = 0.0
+		else:
+			talking = true
+			label.text = "you lost the court case and the murderer walks free."
+			label.visible_ratio = 0.0
+		finish.visible = false
+		finish.disabled = true
+			
 	if talking:
+		label.add_theme_font_size_override("font_size", 35)
 		label.visible_ratio += (delta/label.get_total_character_count()) * 16
 		if Input.is_action_just_pressed("next"):
 			if label.visible_ratio == 1.0:
 				talking = false
 				label.text = "What evidence will you use to 
-		prove " + suspectselected + " is guilty?"
+				prove " + suspectselected + " is guilty?"
+				label.add_theme_font_size_override("font_size", 50)
 			else:
 				label.visible_ratio = 1.0
 	
+	label_2.text = "Juror favor::
+	" + str(winpercentage)  + "%"
 	
 	buttons()
 
@@ -92,185 +116,259 @@ func buttons() ->void:
 		suspect_6.visible = false
 		suspect_6.disabled = true
 		evidence_time = true
-	if evidence_time == true:
+	if evidence_time == true and not talking and not evidencestart:
+		finish.visible = true
+		finish.disabled = false
 		label.text = "What evidence will you use to 
 		prove " + suspectselected + " is guilty?"
 		label.add_theme_font_size_override("font_size", 50)
 		label.position.x = 170.0
-		if inventory.has_item("knife"):
+		if inventory.has_item("knife_clean") or inventory.has_item("knife_bloody") or inventory.has_item("knife_tampered"):
 			knife.visible = true
 			knife.disabled = false
-		if (inventory.has_item("alibi1") and suspect1select) or (inventory.has_item("alibi2") and suspect2select) or (inventory.has_item("alibi3") and suspect3select) or (inventory.has_item("alibi4") and suspect4select) or (inventory.has_item("alibi5") and suspect5select) or (inventory.has_item("alibi6") and suspect6select):
+		if (inventory.has_item("Suspect 1 alibi") and suspect1select) or (inventory.has_item("Suspect 2 alibi") and suspect2select) or (inventory.has_item("Suspect 3 alibi") and suspect3select) or (inventory.has_item("Suspect 4 alibi") and suspect4select) or (inventory.has_item("Suspect 5 alibi") and suspect5select) or (inventory.has_item("Suspect 6 alibi") and suspect6select):
 			alibi.visible = true
 			alibi.disabled = false
 		if inventory.has_item("dishes"):
 			dishes.visible = true
 			dishes.disabled = false
-		if inventory.has_item("fiber"):
+		if inventory.has_item("fibre"):
 			fiber.visible = true
 			fiber.disabled = false
 		if inventory.has_item("blood"):
 			blood.visible = true
 			blood.disabled = false
-		label_2.text = "Juror favor::
-			" + str(winpercentage)  + "%"
+		
+		evidencestart = true
 	if evidence_time:
 		if suspect1select:
 			if knife.button_pressed:
-				winpercentage += 20.0
-				knife.disabled = true
-				talking = true
-				label.text = "Fingerprints found on knife match the suspect!"
+				if inventory.has_item("knife_clean"):
+					winpercentage += 20.0
+					knife.disabled = true
+					talking = true
+					label.text = "Fingerprints found on knife match the suspect!"
+					label.visible_ratio = 0.0
+				else:
+					winpercentage -= 25.0
+					knife.disabled = true
+					talking = true
+					label.text = "Knife has been tampered with! The evidence is rendered irrelevant!"
+					label.visible_ratio = 0.0
 			if fiber.button_pressed:
 				winpercentage += 20.0
 				fiber.disabled = true
 				talking = true
 				label.text = "Fibers match the clothing Suspect was wearing!"
+				label.visible_ratio = 0.0
 			if dishes.button_pressed:
 				winpercentage -= 10.0
 				dishes.disabled = true
 				talking = true
 				label.text = "What does this have to do with the case?!"
+				label.visible_ratio = 0.0
 			if alibi.button_pressed:
 				winpercentage -= 20.0
 				alibi.disabled = true
 				talking = true
 				label.text = "The alibi was confirmed to be true!"
+				label.visible_ratio = 0.0
 			if blood.button_pressed:
 				winpercentage += -10.0
 				blood.disabled = true
 				talking = true
 				label.text = "the blood type doesn't match!"
+				label.visible_ratio = 0.0
 		elif suspect2select:
 			if knife.button_pressed:
-				winpercentage += 20.0
-				knife.disabled = true
-				talking = true
-				label.text = "Fingerprints found on knife match the suspect!"
+				if inventory.has_item("knife_clean"):
+					winpercentage += 20.0
+					knife.disabled = true
+					talking = true
+					label.text = "Fingerprints found on knife match the suspect!"
+					label.visible_ratio = 0.0
+				else:
+					winpercentage -= 25.0
+					knife.disabled = true
+					talking = true
+					label.text = "Knife has been tampered with! The evidence is rendered irrelevant!"
+					label.visible_ratio = 0.0
 			if fiber.button_pressed:
 				winpercentage += 20.0
 				fiber.disabled = true
 				talking = true
 				label.text = "Fibers match the clothing Suspect was wearing!"
+				label.visible_ratio = 0.0
 			if dishes.button_pressed:
 				winpercentage -= 10.0
 				dishes.disabled = true
 				talking = true
 				label.text = "What does this have to do with the case?!"
+				label.visible_ratio = 0.0
 			if alibi.button_pressed:
 				winpercentage += 40.0
 				alibi.disabled = true
 				talking = true
 				label.text = "The alibi was confirmed to be false!"
+				label.visible_ratio = 0.0
 			if blood.button_pressed:
 				winpercentage += 20.0
 				blood.disabled = true
 				talking = true
 				label.text = "the blood type matches!"
+				label.visible_ratio = 0.0
 		elif suspect3select:
 			if knife.button_pressed:
-				winpercentage += 20.0
-				knife.disabled = true
-				talking = true
-				label.text = "Fingerprints found on knife match the suspect!"
+				if inventory.has_item("knife_clean"):
+					winpercentage += 20.0
+					knife.disabled = true
+					talking = true
+					label.text = "Fingerprints found on knife match the suspect!"
+					label.visible_ratio = 0.0
+				else:
+					winpercentage -= 25.0
+					knife.disabled = true
+					talking = true
+					label.text = "Knife has been tampered with! The evidence is rendered irrelevant!"
+					label.visible_ratio = 0.0
 			if fiber.button_pressed:
 				winpercentage += 20.0
 				fiber.disabled = true
 				talking = true
 				label.text = "Fibers match the clothing Suspect was wearing!"
+				label.visible_ratio = 0.0
 			if dishes.button_pressed:
 				winpercentage -= 10.0
 				dishes.disabled = true
 				talking = true
 				label.text = "What does this have to do with the case?!"
+				label.visible_ratio = 0.0
 			if alibi.button_pressed:
 				winpercentage -= 20.0
 				alibi.disabled = true
 				talking = true
 				label.text = "The alibi was confirmed to be true!"
+				label.visible_ratio = 0.0
 			if blood.button_pressed:
 				winpercentage += -10.0
 				blood.disabled = true
 				talking = true
 				label.text = "the blood type doesn't match!"
+				label.visible_ratio = 0.0
 		elif suspect4select:
 			if knife.button_pressed:
-				winpercentage += 20.0
-				knife.disabled = true
-				talking = true
-				label.text = "Fingerprints found on knife match the suspect!"
+				if inventory.has_item("knife_clean"):
+					winpercentage += 20.0
+					knife.disabled = true
+					talking = true
+					label.text = "Fingerprints found on knife match the suspect!"
+					label.visible_ratio = 0.0
+				else:
+					winpercentage -= 25.0
+					knife.disabled = true
+					talking = true
+					label.text = "Knife has been tampered with! The evidence is rendered irrelevant!"
+					label.visible_ratio = 0.0
 			if fiber.button_pressed:
 				winpercentage -= 10.0
 				fiber.disabled = true
 				talking = true
 				label.text = "Fibers do not match the clothing Suspect was wearing!"
+				label.visible_ratio = 0.0
 			if dishes.button_pressed:
 				winpercentage -= 10.0
 				dishes.disabled = true
 				talking = true
 				label.text = "What does this have to do with the case?!"
+				label.visible_ratio = 0.0
 			if alibi.button_pressed:
 				winpercentage -= 20.0
 				alibi.disabled = true
 				talking = true
 				label.text = "The alibi was confirmed to be true!"
+				label.visible_ratio = 0.0
 			if blood.button_pressed:
 				winpercentage += 20.0
 				blood.disabled = true
 				talking = true
 				label.text = "the blood type matches!"
+				label.visible_ratio = 0.0
 		elif suspect5select:
 			if knife.button_pressed:
-				winpercentage -= 10.0
-				knife.disabled = true
-				talking = true
-				label.text = "Fingerprints found on knife match the suspect! except they are several weeks old."
+				if inventory.has_item("knife_clean"):
+					winpercentage -= 10.0
+					knife.disabled = true
+					talking = true
+					label.text = "Fingerprints found on knife match the suspect! except they are several weeks old."
+					label.visible_ratio = 0.0
+				else:
+					winpercentage -= 25.0
+					knife.disabled = true
+					talking = true
+					label.text = "Knife has been tampered with! The evidence is rendered irrelevant!"
+					label.visible_ratio = 0.0
 			if fiber.button_pressed:
 				winpercentage -= 10.0
 				fiber.disabled = true
 				talking = true
 				label.text = "Fibers do not match the clothing Suspect was wearing!"
+				label.visible_ratio = 0.0
 			if dishes.button_pressed:
 				winpercentage -= 10.0
 				dishes.disabled = true
 				talking = true
 				label.text = "What does this have to do with the case?!"
+				label.visible_ratio = 0.0
 			if alibi.button_pressed:
 				winpercentage -= 20.0
 				alibi.disabled = true
 				talking = true
 				label.text = "The alibi was confirmed to be true!"
+				label.visible_ratio = 0.0
 			if blood.button_pressed:
 				winpercentage += 20.0
 				blood.disabled = true
 				talking = true
 				label.text = "the blood type matches!"
+				label.visible_ratio = 0.0
 		elif suspect6select:
 			if knife.button_pressed:
-				winpercentage += -10.0
-				knife.disabled = true
-				talking = true
-				label.text = "Fingerprints found on knife do not match the suspect!"
+				if inventory.add_item("knife_clean"):
+					winpercentage += -10.0
+					knife.disabled = true
+					talking = true
+					label.text = "Fingerprints found on knife do not match the suspect!"
+					label.visible_ratio = 0.0
+				else:
+					winpercentage -= 25.0
+					knife.disabled = true
+					talking = true
+					label.text = "Knife has been tampered with! The evidence is rendered irrelevant!"
+					label.visible_ratio = 0.0
 			if fiber.button_pressed:
 				winpercentage += 20.0
 				fiber.disabled = true
 				talking = true
 				label.text = "Fibers match the clothing Suspect was wearing!"
+				label.visible_ratio = 0.0
 			if dishes.button_pressed:
 				winpercentage -= 10.0
 				dishes.disabled = true
 				talking = true
 				label.text = "What does this have to do with the case?!"
+				label.visible_ratio = 0.0
 			if alibi.button_pressed:
 				winpercentage += 20.0
 				alibi.disabled = true
 				talking = true
 				label.text = "There is no way to confirm or deny the alibi!"
+				label.visible_ratio = 0.0
 			if blood.button_pressed:
 				winpercentage += -10.0
 				blood.disabled = true
 				talking = true
 				label.text = "the blood type doesn't match!"
+				label.visible_ratio = 0.0
 			
 		
 	
