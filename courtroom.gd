@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 				label.add_theme_font_size_override("font_size", 50)
 			else:
 				label.visible_ratio = 1.0
-	
+	winpercentage = clampf(winpercentage, 0.0, 100.0)
 	label_2.text = "Juror favor::
 	" + str(winpercentage)  + "%"
 	

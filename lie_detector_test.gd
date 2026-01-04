@@ -502,13 +502,16 @@ func theanswers() -> void:
 			elif suspect3:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I was hired recently and only met (owner) a few weeks ago, not nearly enough time to even think about murder!"
+					lyingfactor = -7.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I'm still learning to cook, so I get yelled at daily."
+					lyingfactor = -6.0
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "you're holding up 4... right? is this a trick question?"
+					lyingfactor = -8.0
 ###################################suspect 4 stage 2 questions######################################################################################################
 			elif suspect4:
 				if question_1.button_pressed == true:
