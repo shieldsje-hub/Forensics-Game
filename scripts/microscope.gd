@@ -15,8 +15,8 @@ var aliases := {
 }
 
 var textures := {
-	"fibre": preload("res://levels/fiberwall.png"),
-}
+	"fibre": preload("res://levels/cottonzoom(crimescene).png"),
+	}
 
 func _ready():
 	var inv = get_node("/root/inventory")

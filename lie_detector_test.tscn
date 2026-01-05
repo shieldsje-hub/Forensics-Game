@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0cnngk5yv6ad" path="res://levels/_4633b9ce-11ed-44ea-bd74-d47bfe199bea.jpg" id="2_1ymgx"]
 [ext_resource type="Texture2D" uid="uid://daja2qhvpp5p3" path="res://levels/chariar.png" id="3_h16n8"]
 [ext_resource type="Texture2D" uid="uid://cgt32ibbd1cwu" path="res://levels/lightingtexturdoesntgothroughwalls.png" id="4_5jyod"]
-[ext_resource type="Script" uid="uid://crx7wa133uiqw" path="res://point_light_2d.gd" id="5_6hmvp"]
+[ext_resource type="Script" path="res://point_light_2d.gd" id="5_6hmvp"]
 [ext_resource type="Texture2D" uid="uid://di21qhh166vbu" path="res://levels/chef2.png" id="6_v5nae"]
 [ext_resource type="Texture2D" uid="uid://b43o5d0kl50yx" path="res://levels/chef1.png" id="7_cn5hh"]
 [ext_resource type="Texture2D" uid="uid://bvwbdkvunt1po" path="res://levels/chef3.png" id="8_fytmi"]
