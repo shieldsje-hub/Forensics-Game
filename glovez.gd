@@ -7,7 +7,7 @@ func _ready():
 	print("Gloves ready")
 
 func _input_event(_viewport, event, _shape_idx):
-	if maxgloves >= 3:
+	if maxgloves >= 1:
 		queue_free()
 	if event is InputEventMouseButton and event.pressed:
 		print("Gloves picked up")

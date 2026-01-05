@@ -11,7 +11,8 @@ var textures := {
 	"gloves": preload("res://levels/exitsign.png"),
 	"fibre": preload("res://levels/slidefiber.png"),
 	"blood": preload("res://ui/vialofblood.png"),
-	"clipboard": preload("res://ui/maybemainmenuscreenplaceholder.png")
+	"clipboard": preload("res://ui/maybemainmenuscreenplaceholder.png"),
+	"dishes": preload("res://dishes.png")
 }
 
 func _ready():
