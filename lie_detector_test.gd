@@ -110,7 +110,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
-		lyingfactor = -4.0
+		lyingfactor = -6.0
 	if suspect_2b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = true
@@ -125,7 +125,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
-		lyingfactor = -6.0
+		lyingfactor = -7.0
 	if suspect_3b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = false
@@ -140,7 +140,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
-		lyingfactor = -7.0
+		lyingfactor = -6.0
 	if suspect_4b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = false
@@ -155,7 +155,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = false
 		questionstage = 1
-		lyingfactor = -6.0
+		lyingfactor = -7.0
 	if suspect_5b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = false
@@ -170,6 +170,7 @@ func buttonstuff() -> void:
 		suspect5 = true
 		suspect6 = false
 		questionstage = 1
+		lyingfactor = -4.0
 	if suspect_6b.button_pressed == true:
 		chef_1.visible = false
 		chef_2.visible = false
@@ -184,6 +185,7 @@ func buttonstuff() -> void:
 		suspect5 = false
 		suspect6 = true
 		questionstage = 1
+		lyingfactor = -2.0
 func questionstuff() -> void:
 	if (suspect1 == true or suspect2 == true or suspect3 == true or suspect4 == true or suspect5 == true or suspect6 == true) and not talking:
 		questioning = true
@@ -295,38 +297,40 @@ func miscstuff(delta) -> void:
 			chef_1.visible = false
 			chef_2.visible = true
 			done11 = true
-			lyingfactor = -6.0
+			lyingfactor = -7.0
 		elif done2 and not done22:
 			suspect2 = false
 			suspect3 = true
 			chef_2.visible = false
 			chef_3.visible = true
 			done22 = true
-			lyingfactor = -7.0
+			lyingfactor = -6.0
 		elif done3 and not done33:
 			suspect3 = false
 			suspect4 = true
 			chef_3.visible = false
 			thekid.visible = true
 			done33 = true
-			lyingfactor = -6.0
+			lyingfactor = -7.0
 		elif done4 and not done44:
 			suspect4 = false
 			suspect5 = true
 			thekid.visible = false
-			#waitress.visible = true
+			waitress.visible = true
 			done44 = true
+			lyingfactor = -4.0
 		elif done5 and not done55:
 			suspect5 = false
 			suspect6 = true
-			#waitress.visible = false
-			#clerk.visible = true
+			waitress.visible = false
+			clerk.visible = true
 			done55 = true
+			lyingfactor = -2.0
 		elif done6 and not done66:
 			suspect3 = false
 			suspect4 = true
 			#clerk.visible = false
-			#get_tree().scene_changed #idk change tree cause you're done
+			get_tree().change_scene_to_file("res://levels/Level2_Lab.tscn")
 			done55 = true
 	if questionstage == 4 and talking == false:
 		talking = true
@@ -458,14 +462,17 @@ func theanswers() -> void:
 					label.text = "at home"
 					if not inventory.add_item(str(alibi6)):
 						inventory.add_item(str(alibi6))
+					lyingfactor = -2.0
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "I left (owner) and (chef 2) to lockup after my shift was over, went home after that but I live alone, so no."
 					if not inventory.add_item(str(alibi6)):
 						inventory.add_item(str(alibi6))
+					lyingfactor = -3.0
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "they're orange, like their name."
+					lyingfactor = -2.0
 ###########################stage######################################################################################
 #############################2############################################################################################################
 		elif questionstage == 2:
@@ -530,23 +537,29 @@ func theanswers() -> void:
 				if question_1.button_pressed == true:
 					talking = true
 					label.text = "I always wanted to work in a restaurant, (owner) gave me that opportunity"
+					lyingfactor = -4.0
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "no, none that I recall."
+					lyingfactor = -5.0
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "sorry, is this relevant?"
+					lyingfactor = -4.5
 ###################################suspect 6 stage 2 questions######################################################################################################
 			elif suspect6:
 				if question_1.button_pressed == true:
 					talking = true
 					label.text = "This is my fourth job after dopping outta highschool, (owner) was kind enough to let me work here despite my reputation"
+					lyingfactor = -3.0
 				elif question_2.button_pressed == true:
 					talking = true
 					label.text = "Not that i'm aware of"
+					lyingfactor = -2.0
 				elif question_3.button_pressed == true:
 					talking = true
 					label.text = "No, I was told I'm not allowed."
+					lyingfactor = -3.0
 ###################################stage######################################################################################################
 #####################################3######################################################################################################
 		elif questionstage == 3:
@@ -582,46 +595,56 @@ func theanswers() -> void:
 			elif suspect3:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "oh this? I messed up with the carrot peeler, I'm still working on that."
+					lyingfactor = -6.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I havent been here long enough to judge who's a murderer! I mean, If I had to guess, I might think (kid) could have done it. big inheritance on the line."
+					lyingfactor = -8.5
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "What!? no! I couldn't have done it! look at me! do you think I have the guts to... to murder someone?"
+					lyingfactor = -11.0
+					
 ###################################suspect 4 stage 3 questions######################################################################################################
 			elif suspect4:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "ok ok, I'm not around the employees often but I do see (clerk) and (chef 2) arguing every time i'm there."
+					lyingfactor = -8.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I don't think I know anybody well enough to accuse them of murder"
+					lyingfactor = -10.0
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "You can't be serious, My dad may be harsh but it was never enough to warrant a punch, let alone murder"
+					lyingfactor = -8.0
 ###################################suspect 5 stage 3 questions######################################################################################################
 			elif suspect5:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I... I think I might have seen (clerk) when I left, no, maybe it was (chef 2)..."
+					lyingfactor = -6.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "Some of the chefs have bad tempers but I don't think it's enough to provoke murderous intent."
+					lyingfactor = -7.0
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I'd like to speak to a lawyer."
+					lyingfactor = -8.0
 ###################################suspect 6 stage 3 questions######################################################################################################
 			elif suspect6:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "a couple months. enough to know my way around the store."
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "(chef 2) and (chef 3) always get on my nerves. no that that's related or anything."
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "you're wrong. my violent days are over"
 func polygraph(delta) -> void:
 	
 	followpoint.global_position.y =  move_toward(followpoint.global_position.y, lyingfactor * 10, delta * 16)
