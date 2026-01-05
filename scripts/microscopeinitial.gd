@@ -1,6 +1,4 @@
 extends Node2D
-
-@onready var image_display := $Sprite2D
 var in_range := false
 
 func _process(_delta):

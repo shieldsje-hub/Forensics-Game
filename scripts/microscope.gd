@@ -15,7 +15,7 @@ var aliases := {
 }
 
 var textures := {
-	"fibre": preload("res://levels/bkvyrdhcar.png"),
+	"fibre": preload("res://levels/fiberwall.png"),
 }
 
 func _ready():

@@ -1,13 +1,12 @@
 extends Area2D
 
 signal picked_up
-var novial
+var novial = inventory.count_item("vial")
 
 func _ready():
 	print("Vial ready")
 
 func _process(_delta: float) -> void:
-	var novial = inventory.count_item("vial")
 	if novial >= 4:
 		queue_free()
 		
