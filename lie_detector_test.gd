@@ -15,7 +15,6 @@ extends Node2D
 
 @onready var speechbubble: Sprite2D = $Speechbubble
 @onready var label: Label = $Label
-@onready var followpoint_sprite2d: Sprite2D = $followpoint/Sprite2D
 
 
 @onready var chef_1: Sprite2D = $Chef1
@@ -625,13 +624,3 @@ func polygraph(delta) -> void:
 	followpoint.global_position.y =  move_toward(followpoint.global_position.y, lyingfactor * 10, delta * 16)
 	lyingfactor += randf_range(-1.0, 1.0) * delta
 	lyingfactor = clampf(lyingfactor, -13.0, 0.0)
-	
-		
-	#spawnline(delta)
-func spawnline(_delta) -> void:
-	
-	spawncount += 1
-	
-	polylineline.name = "polylineline" + str(spawncount)
-	polylineline.global_position = followpoint_sprite2d.global_position
-	add_child(polylineline)
