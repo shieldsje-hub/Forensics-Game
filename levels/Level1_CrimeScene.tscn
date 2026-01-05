@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=31 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://csat55gei317t" path="res://levels/knife-removebg-preview (1).png" id="15_lgesj"]
 [ext_resource type="PackedScene" uid="uid://bce12spgiqhhy" path="res://objects/fibre.tscn" id="18_nulta"]
 [ext_resource type="PackedScene" uid="uid://b05qb6fd7cahv" path="res://dishes.tscn" id="19_8uj51"]
+[ext_resource type="Texture2D" uid="uid://cirrpctqhbc7t" path="res://levels/deadbody.png" id="20_eveyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -345,6 +346,12 @@ texture = ExtResource("9_ow1bj")
 [node name="Dishes" parent="." instance=ExtResource("19_8uj51")]
 top_level = true
 position = Vector2(-1047, -91)
+
+[node name="Deadbody" type="Sprite2D" parent="."]
+self_modulate = Color(0.5211406, 0.52114064, 0.52114046, 1)
+position = Vector2(-396.15784, -73.55397)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("20_eveyh")
 
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="mappieces/door1" method="_on_body_exited"]

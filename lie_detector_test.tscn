@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://djfn7qxpknt24"]
+[gd_scene load_steps=18 format=3 uid="uid://djfn7qxpknt24"]
 
 [ext_resource type="Texture2D" uid="uid://ddkyrya5ut3kr" path="res://levels/_93945ba8-17c6-4e8b-becd-ea19e77a95a7.jpg" id="1_1iwux"]
 [ext_resource type="Script" uid="uid://c7dkna4tolrm3" path="res://lie_detector_test.gd" id="1_v5nae"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b43o5d0kl50yx" path="res://levels/chef1.png" id="7_cn5hh"]
 [ext_resource type="Texture2D" uid="uid://bvwbdkvunt1po" path="res://levels/chef3.png" id="8_fytmi"]
 [ext_resource type="Texture2D" uid="uid://bwti8xcwt8gbb" path="res://levels/thekid.png" id="9_3v81o"]
+[ext_resource type="Texture2D" uid="uid://c2s2ulefbym3e" path="res://levels/theclerk.png" id="10_3v81o"]
 [ext_resource type="Texture2D" uid="uid://df0jyhurpeqcc" path="res://speechbubble.png" id="11_cn5hh"]
+[ext_resource type="Texture2D" uid="uid://dyeybdbwwku4w" path="res://levels/waitress.png" id="11_x2cfm"]
 [ext_resource type="Texture2D" uid="uid://d3ndvnba433yg" path="res://polygraph background.png" id="12_fytmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fytmi"]
@@ -85,6 +87,21 @@ self_modulate = Color(0.21230483, 0.21230483, 0.21230483, 1)
 position = Vector2(576.45105, 255.86761)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_3v81o")
+
+[node name="waitress" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.47007585, 0.47007585, 0.47007585, 1)
+self_modulate = Color(0.45452422, 0.45452428, 0.45452422, 1)
+position = Vector2(578.3196, 244.50476)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("11_x2cfm")
+
+[node name="clerk" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.31431624, 0.3143161, 0.31431603, 1)
+position = Vector2(574.36914, 264.05374)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_3v81o")
 
 [node name="suspectselection" type="Node2D" parent="."]
 

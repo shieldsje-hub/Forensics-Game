@@ -22,8 +22,8 @@ extends Node2D
 @onready var chef_2: Sprite2D = $Chef2
 @onready var chef_3: Sprite2D = $Chef3
 @onready var thekid: Sprite2D = $Thekid
-@onready var waitress: Sprite2D = null   #change these to the new stuff
-@onready var clerk: Sprite2D = null 
+@onready var waitress: Sprite2D = $waitress
+@onready var clerk: Sprite2D = $clerk
 
 const polyline = preload("res://polygraphlines.tscn")
 var polylineline = polyline.instantiate()
@@ -102,8 +102,8 @@ func buttonstuff() -> void:
 		chef_2.visible = false
 		chef_3.visible = false
 		thekid.visible = false
-		#waitress.visible = false
-		#clerk.visible = false
+		waitress.visible = false
+		clerk.visible = false
 		suspect1 = true
 		suspect2 = false
 		suspect3 = false
@@ -117,8 +117,8 @@ func buttonstuff() -> void:
 		chef_2.visible = true
 		chef_3.visible = false
 		thekid.visible = false
-		#waitress.visible = false
-		#clerk.visible = false
+		waitress.visible = false
+		clerk.visible = false
 		suspect1 = false
 		suspect2 = true
 		suspect3 = false
@@ -132,8 +132,8 @@ func buttonstuff() -> void:
 		chef_2.visible = false
 		chef_3.visible = true
 		thekid.visible = false
-		#waitress.visible = false
-		#clerk.visible = false
+		waitress.visible = false
+		clerk.visible = false
 		suspect1 = false
 		suspect2 = false
 		suspect3 = true
@@ -147,8 +147,8 @@ func buttonstuff() -> void:
 		chef_2.visible = false
 		chef_3.visible = false
 		thekid.visible = true
-		#waitress.visible = false
-		#clerk.visible = false
+		waitress.visible = false
+		clerk.visible = false
 		suspect1 = false
 		suspect2 = false
 		suspect3 = false
@@ -162,8 +162,8 @@ func buttonstuff() -> void:
 		chef_2.visible = false
 		chef_3.visible = false
 		thekid.visible = false
-		#waitress.visible = true
-		#clerk.visible = false
+		waitress.visible = true
+		clerk.visible = false
 		suspect1 = false
 		suspect2 = false
 		suspect3 = false
@@ -176,8 +176,8 @@ func buttonstuff() -> void:
 		chef_2.visible = false
 		chef_3.visible = false
 		thekid.visible = false
-		#waitress.visible = false
-		#clerk.visible = true
+		waitress.visible = false
+		clerk.visible = true
 		suspect1 = false
 		suspect2 = false
 		suspect3 = false
@@ -265,7 +265,7 @@ func questionstuff() -> void:
 		if questionstage == 2:
 			question_1.text = "how do you know the owner?"
 			question_2.text = "have you had any arguments at the workplace lately?"
-			question_3.text = "any pets?"
+			question_3.text = "any siblings?"
 		if questionstage == 3:
 			question_1.text = "do you know who was still working in the restaurant when you left?"
 			question_2.text = "do you have any idea who the murderer could be?"
@@ -516,35 +516,38 @@ func theanswers() -> void:
 			elif suspect4:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "We didn't talk much, and when we did it was mostly him telling me to work harder."
+					lyingfactor = -6.0
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "no... I don't think so."
+					lyingfactor = -12.0
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "No, none."
+					lyingfactor = -5.0
 ###################################suspect 5 stage 2 questions######################################################################################################
 			elif suspect5:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "I always wanted to work in a restaurant, (owner) gave me that opportunity"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "no, none that I recall."
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "sorry, is this relevant?"
 ###################################suspect 6 stage 2 questions######################################################################################################
 			elif suspect6:
 				if question_1.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "This is my fourth job after dopping outta highschool, (owner) was kind enough to let me work here despite my reputation"
 				elif question_2.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "Not that i'm aware of"
 				elif question_3.button_pressed == true:
 					talking = true
-					label.text = "________________________________"
+					label.text = "No, I was told I'm not allowed."
 ###################################stage######################################################################################################
 #####################################3######################################################################################################
 		elif questionstage == 3:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyeybdbwwku4w"
-path="res://.godot/imported/waitress.png-8d16a8d0035374817ea5a039e2d01624.ctex"
+uid="uid://cirrpctqhbc7t"
+path="res://.godot/imported/deadbody.png-f061aacbeb218bf1d2db9b61c490dc17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/waitress.png"
-dest_files=["res://.godot/imported/waitress.png-8d16a8d0035374817ea5a039e2d01624.ctex"]
+source_file="res://levels/deadbody.png"
+dest_files=["res://.godot/imported/deadbody.png-f061aacbeb218bf1d2db9b61c490dc17.ctex"]
 
 [params]
 
