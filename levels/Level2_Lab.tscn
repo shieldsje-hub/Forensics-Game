@@ -1,13 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://dscomxe8hfpni"]
+[gd_scene load_steps=28 format=3 uid="uid://dscomxe8hfpni"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwjmip5pstw5i" path="res://levels/_51578ec9-7d9d-422d-b840-fba0d52caa83.jpg" id="2"]
 [ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="3"]
 [ext_resource type="Texture2D" uid="uid://ck05cmo431yqw" path="res://doorsprite.png" id="3_5o2pl"]
 [ext_resource type="Script" uid="uid://dt4ffnrifx06y" path="res://levels/door1.gd" id="3_60t8u"]
-[ext_resource type="Script" path="res://levels/go_back.gd" id="4"]
+[ext_resource type="Script" uid="uid://xwmces1878g6" path="res://levels/go_back.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://cqib6jiwi5vpe" path="res://ui/control.tscn" id="5"]
-[ext_resource type="Script" uid="uid://u536eatcehys" path="res://levels/door2.gd" id="5_tp7qs"]
 [ext_resource type="Script" uid="uid://btr651eyjm5p5" path="res://scripts/work_area_1_knife.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://b4vwnt5uqyhsq" path="res://levels/tablewoodplace.png" id="8_fowqb"]
 [ext_resource type="Script" uid="uid://etb8urn42q2k" path="res://levels/canvas_modulate.gd" id="9"]
@@ -123,7 +122,7 @@ texture = ExtResource("3_5o2pl")
 
 [node name="Area2D2" type="Area2D" parent="mappiecesbutlab/labwall1"]
 position = Vector2(0, -9)
-script = ExtResource("5_tp7qs")
+script = ExtResource("3_60t8u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mappiecesbutlab/labwall1/Area2D2"]
 position = Vector2(444, -94)
@@ -254,8 +253,8 @@ texture = ExtResource("18_tp7qs")
 
 [connection signal="body_entered" from="mappiecesbutlab/labwall1/courtdoor" to="mappiecesbutlab/labwall1/courtdoor" method="_on_body_entered"]
 [connection signal="body_exited" from="mappiecesbutlab/labwall1/courtdoor" to="mappiecesbutlab/labwall1/courtdoor" method="_on_body_exited"]
-[connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_entered"]
-[connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_exited"]
+[connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/courtdoor" method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/courtdoor" method="_on_area_2d_2_body_exited"]
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
 [connection signal="body_entered" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
