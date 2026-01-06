@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ydby8fpfq4jo"]
+[gd_scene load_steps=39 format=3 uid="uid://ydby8fpfq4jo"]
 
 [ext_resource type="PackedScene" uid="uid://bcfas58y7fp25" path="res://player/player.tscn" id="1_1yedr"]
 [ext_resource type="Script" uid="uid://bnr3y0crbxpl" path="res://levels/level_1_crime_scene.gd" id="1_lcarr"]
@@ -20,6 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://bce12spgiqhhy" path="res://objects/fibre.tscn" id="18_nulta"]
 [ext_resource type="PackedScene" uid="uid://b05qb6fd7cahv" path="res://dishes.tscn" id="19_8uj51"]
 [ext_resource type="Texture2D" uid="uid://cirrpctqhbc7t" path="res://levels/deadbody.png" id="20_eveyh"]
+[ext_resource type="Texture2D" uid="uid://01caqn581h27" path="res://levels/roadbutnotactually.png" id="21_xp1m8"]
+[ext_resource type="Script" uid="uid://oqq8m3k6qnem" path="res://levels/node_2d.gd" id="22_e28vu"]
+[ext_resource type="Texture2D" uid="uid://bkskb2g12bnhk" path="res://levels/goodcarmade3dbutnotreally.png" id="23_28fs5"]
+[ext_resource type="Texture2D" uid="uid://ddqyjgxri77d2" path="res://levels/trafficlight.png" id="24_e28vu"]
+[ext_resource type="Texture2D" uid="uid://h4q61ur2c8di" path="res://icon.svg" id="25_28fs5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcarr"]
 size = Vector2(1121.75, 25.5)
@@ -73,6 +78,15 @@ func _process(delta: float) -> void:
 	global_position = lerp(global_position, player.global_position + Vector2(0.0, -10.0), delta * 3)
 	#global_position = lerp(global_position, knifespriterigid.global_position, delta * 3)
 "
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njr0v"]
+size = Vector2(282.04196, 193.5326)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e28vu"]
+size = Vector2(278.75403, 424.29047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28fs5"]
+size = Vector2(227.22076, 748.1127)
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_lcarr")
@@ -353,6 +367,63 @@ position = Vector2(-396.15784, -73.55397)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("20_eveyh")
 
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("22_e28vu")
+
+[node name="Goodcarmade3Dbutnotreally" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(1255.9675, -189.03235)
+texture = ExtResource("23_28fs5")
+
+[node name="carhitplayer" type="Area2D" parent="Node2D"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/carhitplayer"]
+position = Vector2(1248.5032, -124.880585)
+shape = SubResource("RectangleShape2D_njr0v")
+
+[node name="Trafficlight" type="Sprite2D" parent="Node2D"]
+position = Vector2(1037.3474, -208.73999)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("24_e28vu")
+
+[node name="Deadbody" type="Sprite2D" parent="Node2D"]
+visible = false
+modulate = Color(0.6789437, 0.6789437, 0.6789437, 1)
+z_index = 1
+position = Vector2(1270.576, -73.054)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("20_eveyh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Roadbutnotactually" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1250.3376, 189.18306)
+scale = Vector2(0.30400133, 2.232754)
+texture = ExtResource("21_xp1m8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1250.3379, 189.19211)
+shape = SubResource("RectangleShape2D_e28vu")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.5529556, 0.55295557, 0.55295557, 1)
+z_index = -4096
+position = Vector2(64.32922, -705.3286)
+scale = Vector2(116.07778, 134.57735)
+texture = ExtResource("25_28fs5")
+region_enabled = true
+region_rect = Rect2(40, 40, 48, 16)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1504.1193, 26.138535)
+shape = SubResource("RectangleShape2D_28fs5")
+
 [connection signal="body_entered" from="mappieces/door1" to="mappieces/door1" method="_on_body_entered"]
 [connection signal="body_exited" from="mappieces/door1" to="mappieces/door1" method="_on_body_exited"]
 [connection signal="body_entered" from="mappieces/door2" to="mappieces/door1" method="_on_door_2_body_entered"]
@@ -361,3 +432,4 @@ texture = ExtResource("20_eveyh")
 [connection signal="body_exited" from="mappieces/buildingoutsidewall" to="mappieces/buildingoutsidewall" method="_on_body_exited"]
 [connection signal="body_entered" from="mappieces/car go?" to="Player" method="_on_car_go_body_entered"]
 [connection signal="body_exited" from="mappieces/car go?" to="Player" method="_on_car_go_body_exited"]
+[connection signal="body_entered" from="Node2D/carhitplayer" to="Node2D" method="_on_carhitplayer_body_entered"]

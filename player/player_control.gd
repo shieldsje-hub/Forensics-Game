@@ -13,6 +13,8 @@ var isready = bool(false)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	if inventory.has_item("isghost"):
+		modulate = Color(1.0, 1.0, 1.0, 0.196)
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

@@ -29,6 +29,7 @@ version_control/autoload_on_startup=true
 
 player="add player here"
 courtdoor="idk how else im gonna do this"
+isghost=""
 
 [input]
 
