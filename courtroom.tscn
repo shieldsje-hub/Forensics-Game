@@ -71,6 +71,13 @@ offset_right = 880.729
 offset_bottom = 203.87401
 text = "Suspect 6"
 
+[node name="Driver" type="Button" parent="."]
+offset_left = 888.5126
+offset_top = 144.89723
+offset_right = 984.77014
+offset_bottom = 204.88289
+text = "The Driver"
+
 [node name="evidence" type="Node2D" parent="."]
 
 [node name="blood" type="Button" parent="evidence"]

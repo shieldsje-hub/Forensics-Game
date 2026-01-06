@@ -13,7 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(hit, canvas_modulate.color,timerstart)
+	
 	if hit:
 		canvas_modulate.color = Color(0.0, 0.0, 0.0, 1.0)
 		hit = false

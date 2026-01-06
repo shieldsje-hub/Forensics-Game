@@ -6,6 +6,7 @@ extends Node2D
 @onready var suspect_4: Button = $"suspect 4"
 @onready var suspect_5: Button = $"suspect 5"
 @onready var suspect_6: Button = $"suspect 6"
+@onready var driver: Button = $Driver
 @onready var knife: Button = $evidence/knife
 @onready var fiber: Button = $evidence/fiber
 @onready var alibi: Button = $evidence/alibi
@@ -13,6 +14,7 @@ extends Node2D
 @onready var blood: Button = $evidence/blood
 @onready var label_2: Label = $Label2
 @onready var finish: Button = $finish
+
 var win = bool(false)
 var lose = bool(false)
 var evidencestart = bool(false)
@@ -23,6 +25,7 @@ var suspect3select = bool(false)
 var suspect4select = bool(false)
 var suspect5select = bool(false)
 var suspect6select = bool(false)
+var driverselect = bool(false)
 var suspectselected = str("")
 var evidence_time = bool(false)
 var talking = bool(false)
@@ -35,7 +38,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if finish.button_pressed:
 		if randf_range(0.0, 100.0) <= winpercentage:
-			if suspect2select:
+			if suspect2select or driverselect:
 				talking = true
 				label.text = "You won! the murderer was proven guilty!"
 				label.visible_ratio = 0.0
@@ -83,12 +86,14 @@ func buttons() ->void:
 		suspectselected = "suspect 5"
 	elif suspect6select:
 		suspectselected = "suspect 6"
+	elif driverselect:
+		suspectselected = "The Driver"
 	
 	
 	
 	
 	
-	if not (suspect1select or suspect2select or suspect3select or suspect4select or suspect5select or suspect6select):
+	if not (suspect1select or suspect2select or suspect3select or suspect4select or suspect5select or suspect6select or driverselect):
 		label.text = "Who do you want to prosecute?"
 		if suspect_1.button_pressed:
 			suspect1select = true
@@ -102,6 +107,12 @@ func buttons() ->void:
 			suspect5select = true
 		if suspect_6.button_pressed:
 			suspect6select = true
+		if inventory.has_item("isghost"):
+			if driver.button_pressed:
+				driverselect = true
+		else: 
+			driver.visible = false
+			driver.disabled = true
 	else:
 		suspect_1.visible = false
 		suspect_1.disabled = true
@@ -115,6 +126,8 @@ func buttons() ->void:
 		suspect_5.disabled = true
 		suspect_6.visible = false
 		suspect_6.disabled = true
+		driver.visible = false
+		driver.disabled = true
 		evidence_time = true
 	if evidence_time == true and not talking and not evidencestart:
 		finish.visible = true
@@ -126,7 +139,7 @@ func buttons() ->void:
 		if inventory.has_item("knife_clean") or inventory.has_item("knife_bloody") or inventory.has_item("knife_tampered"):
 			knife.visible = true
 			knife.disabled = false
-		if (inventory.has_item("Suspect 1 alibi") and suspect1select) or (inventory.has_item("Suspect 2 alibi") and suspect2select) or (inventory.has_item("Suspect 3 alibi") and suspect3select) or (inventory.has_item("Suspect 4 alibi") and suspect4select) or (inventory.has_item("Suspect 5 alibi") and suspect5select) or (inventory.has_item("Suspect 6 alibi") and suspect6select):
+		if (inventory.has_item("Suspect 1 alibi") and suspect1select) or (inventory.has_item("Suspect 2 alibi") and suspect2select) or (inventory.has_item("Suspect 3 alibi") and suspect3select) or (inventory.has_item("Suspect 4 alibi") and suspect4select) or (inventory.has_item("Suspect 5 alibi") and suspect5select) or (inventory.has_item("Suspect 6 alibi") and suspect6select) or driverselect:
 			alibi.visible = true
 			alibi.disabled = false
 		if inventory.has_item("dishes"):
@@ -368,6 +381,44 @@ func buttons() ->void:
 				blood.disabled = true
 				talking = true
 				label.text = "the blood type doesn't match!"
+				label.visible_ratio = 0.0
+		elif driverselect:
+			if knife.button_pressed:
+				if inventory.add_item("knife_clean"):
+					winpercentage += 30.0
+					knife.disabled = true
+					talking = true
+					label.text = "suspect is found in possesion of the murder weapon!"
+					label.visible_ratio = 0.0
+				else:
+					winpercentage -= -40.0
+					knife.disabled = true
+					talking = true
+					label.text = "Suspect is found in possesion of the tampered with murder weapon!"
+					label.visible_ratio = 0.0
+			if fiber.button_pressed:
+				winpercentage += -20.0
+				fiber.disabled = true
+				talking = true
+				label.text = "Fibers do not match the clothing Suspect was wearing!"
+				label.visible_ratio = 0.0
+			if dishes.button_pressed:
+				winpercentage -= -30.0
+				dishes.disabled = true
+				talking = true
+				label.text = "Dishes prove the suspect had to have been in the store!"
+				label.visible_ratio = 0.0
+			if alibi.button_pressed:
+				winpercentage += 20.0
+				alibi.disabled = true
+				talking = true
+				label.text = "There is no way to confirm or deny the alibi!"
+				label.visible_ratio = 0.0
+			if blood.button_pressed:
+				winpercentage += +30.0
+				blood.disabled = true
+				talking = true
+				label.text = "Suspect was found covered in one of the victims blood!"
 				label.visible_ratio = 0.0
 			
 		
