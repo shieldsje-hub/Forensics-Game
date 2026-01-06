@@ -27,7 +27,7 @@ offset_left = 618.50836
 offset_top = 277.93674
 offset_right = 969.91376
 offset_bottom = 335.95847
-text = "options"
+text = "Options"
 script = ExtResource("2_d2nv2")
 
 [node name="Maybemainmenuscreenplaceholder" type="Sprite2D" parent="."]

@@ -9,7 +9,9 @@ var aliases := {
 	"knife_clean": "knife",
 	"knife_tampered": "knife",
 	"knife_bloody": "knife",
-	"blood": "blood"
+	"blood": "blood",
+	"dishes": "dishes",
+	"gloves": "gloves"
 }
 
 var textures := {
@@ -18,6 +20,8 @@ var textures := {
 	"knife_clean": preload("uid://dtbdugx1y42ov"),
 	"knife_tampered": preload("uid://dtbdugx1y42ov"),
 	"knife_bloody": preload("uid://bawuxx2rqlaa8"),
+	"dishes": preload("res://dishes.png"),
+	"gloves": preload("res://levels/download.jpg")
 }
 
 
