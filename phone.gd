@@ -4,6 +4,8 @@ extends Node2D
 @onready var button_3: Button = $"calloptions/button 3"
 @onready var button_4: Button = $"calloptions/button 4"
 @onready var button_5: Button = $"calloptions/button 5"
+@onready var button: Button = $Button
+
 @onready var label: Label = $Label
 var calling = bool(false)
 
@@ -14,6 +16,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	
+	if button.button_pressed:
+		get_tree().change_scene_to_file("res://levels/Level2_Lab.tscn")
 	if calling:
 		button_1.visible = false
 		button_2.visible = false

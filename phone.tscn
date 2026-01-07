@@ -56,3 +56,10 @@ offset_top = 67.17027
 offset_right = 762.885
 offset_bottom = 426.9369
 autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+offset_left = 568.4478
+offset_top = 371.62192
+offset_right = 749.22327
+offset_bottom = 415.79956
+text = "Done"
