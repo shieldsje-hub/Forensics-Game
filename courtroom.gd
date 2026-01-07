@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		if randf_range(0.0, 100.0) <= winpercentage:
 			if suspect2select or driverselect:
 				talking = true
-				label.text = "You won! the murderer was proven guilty!"
+				label.text = "You won! a murderer was proven guilty!"
 				label.visible_ratio = 0.0
 			else:
 				talking = true

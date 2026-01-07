@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://t1y5xe6c8k38"]
+
+[ext_resource type="Script" uid="uid://pukw6m0m3gkl" path="res://phone.gd" id="1_0e3g3"]
+[ext_resource type="Texture2D" uid="uid://dda1eu66ephmm" path="res://levels/_420c81de-8eb5-42f2-9245-6d3ce6e110e1.jpg" id="2_hfnv5"]
+[ext_resource type="Texture2D" uid="uid://d4edhrtjyydpg" path="res://levels/phonebackground.png" id="3_17gxr"]
+
+[node name="phone" type="Node2D"]
+script = ExtResource("1_0e3g3")
+
+[node name="420c81De8Eb542f292456d3Ce6e110e1" type="Sprite2D" parent="."]
+modulate = Color(0.29586652, 0.2958665, 0.2958665, 1)
+position = Vector2(525.9989, 317.6869)
+scale = Vector2(1.4913929, 1.2684929)
+texture = ExtResource("2_hfnv5")
+
+[node name="Phonebackground" type="Sprite2D" parent="."]
+position = Vector2(543.4664, 442.0225)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_17gxr")
+
+[node name="calloptions" type="Node2D" parent="."]
+
+[node name="button 1" type="Button" parent="calloptions"]
+offset_left = 304.3864
+offset_top = 86.96759
+offset_right = 747.22424
+offset_bottom = 130.3988
+
+[node name="button 2" type="Button" parent="calloptions"]
+offset_left = 303.6013
+offset_top = 138.6344
+offset_right = 746.9422
+offset_bottom = 181.60371
+
+[node name="button 3" type="Button" parent="calloptions"]
+offset_left = 303.65787
+offset_top = 189.5413
+offset_right = 746.2232
+offset_bottom = 231.85497
+
+[node name="button 4" type="Button" parent="calloptions"]
+offset_left = 305.8492
+offset_top = 239.74258
+offset_right = 747.6371
+offset_bottom = 282.32623
+
+[node name="button 5" type="Button" parent="calloptions"]
+offset_left = 304.54395
+offset_top = 291.267
+offset_right = 746.0677
+offset_bottom = 333.5893
+
+[node name="Label" type="Label" parent="."]
+offset_left = 296.1952
+offset_top = 67.17027
+offset_right = 762.885
+offset_bottom = 426.9369
+autowrap_mode = 3
