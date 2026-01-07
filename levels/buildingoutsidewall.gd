@@ -24,14 +24,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		#visible = false
-		#light1.visible = true
-		#light2.visible = true
 		opacitygo = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		#visible = true
-		#light1.visible = false
-		#light2.visible = false
 		opacitygo = false

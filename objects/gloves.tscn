@@ -1,13 +1,41 @@
 [gd_scene load_steps=4 format=3 uid="uid://vlvmmc86w5yq"]
 
-[ext_resource type="Script" uid="uid://bu3igaql8aio2" path="res://scripts/gloves.gd" id="1_h3eor"]
 [ext_resource type="Texture2D" uid="uid://hnvd56pxr5rl" path="res://levels/download.jpg" id="2_h3eor"]
+
+[sub_resource type="GDScript" id="GDScript_lktfk"]
+script/source = "extends Node2D
+
+signal collected(item_name)
+var in_evidence
+@export var item_name := \"gloves\"
+
+
+func _on_area_2d_body_entered(body: Node2D):
+	if body.is_in_group(\"player\"):
+		in_evidence = true
+
+func _process(_delta: float) -> void:
+	if inventory.has_item(\"gloves\"):
+		queue_free()
+
+func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed(\"pickup\") and in_evidence:
+		emit_signal(\"collected\", item_name)
+		print(\"gloves\")
+		if inventory.add_item(item_name):
+			queue_free() # remove item from world
+		if inventory.has_item(\"gloves\"):
+			queue_free()
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	in_evidence = false
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2b5e"]
 size = Vector2(5.361452, 20)
 
 [node name="gloves" type="Node2D"]
-script = ExtResource("1_h3eor")
+script = SubResource("GDScript_lktfk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_h3eor")
