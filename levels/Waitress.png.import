@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyeybdbwwku4w"
-path="res://.godot/imported/Waitress.png-8ca0f88c5328e2180365350b4b00db26.ctex"
+path="res://.godot/imported/waitress.png-8d16a8d0035374817ea5a039e2d01624.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/Waitress.png"
-dest_files=["res://.godot/imported/Waitress.png-8ca0f88c5328e2180365350b4b00db26.ctex"]
+source_file="res://levels/waitress.png"
+dest_files=["res://.godot/imported/waitress.png-8d16a8d0035374817ea5a039e2d01624.ctex"]
 
 [params]
 
