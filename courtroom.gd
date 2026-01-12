@@ -139,7 +139,7 @@ func buttons() ->void:
 		if inventory.has_item("knife_clean") or inventory.has_item("knife_bloody") or inventory.has_item("knife_tampered"):
 			knife.visible = true
 			knife.disabled = false
-		if (inventory.has_item("Suspect 1 alibi") and suspect1select) or (inventory.has_item("Suspect 2 alibi") and suspect2select) or (inventory.has_item("Suspect 3 alibi") and suspect3select) or (inventory.has_item("Suspect 4 alibi") and suspect4select) or (inventory.has_item("Suspect 5 alibi") and suspect5select) or (inventory.has_item("Suspect 6 alibi") and suspect6select) or driverselect:
+		if (inventory.has_item("Suspect 1 alibi (confirmed)") and suspect1select) or (inventory.has_item("Suspect 2 alibi (false)") and suspect2select) or (inventory.has_item("Suspect 3 alibi (confirmed)") and suspect3select) or (inventory.has_item("Suspect 4 alibi (confirmed)") and suspect4select) or (inventory.has_item("Suspect 5 alibi (confirmed)") and suspect5select) or (inventory.has_item("Suspect 6 alibi") and suspect6select) or driverselect:
 			alibi.visible = true
 			alibi.disabled = false
 		if inventory.has_item("dishes"):
