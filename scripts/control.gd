@@ -8,7 +8,7 @@ var textures := {
 	"knife_tampered": preload("res://levels/tampered_knife(tampered).png"),
 	"knife_bloody": preload("res://levels/bloodied_knife(tampered).png"),
 	"knife": preload("res://ui/knife_clean.png"),
-	"gloves": preload("res://levels/exitsign.png"),
+	"gloves": preload("res://levels/download.jpg"),
 	"fibre": preload("res://levels/slidefiber.png"),
 	"blood": preload("res://ui/vialofblood.png"),
 	"clipboard": preload("res://ui/maybemainmenuscreenplaceholder.png"),
