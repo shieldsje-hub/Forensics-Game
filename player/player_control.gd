@@ -18,13 +18,14 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("w") and is_on_floor() and not askingready:
 		velocity.y = JUMP_VELOCITY
-	
+
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("a", "d")
 	if direction and not askingready:
 		velocity.x = lerp(velocity.x, direction * SPEED, delta * 8) 
 		#scale.x = direction
+
 	else:
 		velocity.x = lerp(velocity.x, 0.0, delta * 8)
 	if direction < 0:
