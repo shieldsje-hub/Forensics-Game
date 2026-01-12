@@ -12,14 +12,6 @@ func _on_body_exited(body: Node2D) -> void:
 		can = false
 
 
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		can = true
-
-func _on_area_2d_2_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		can = false
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		can = true

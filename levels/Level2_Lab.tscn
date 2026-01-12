@@ -251,6 +251,8 @@ position = Vector2(-489.00003, -94)
 scale = Vector2(0.31272045, 0.3309092)
 texture = ExtResource("19_ibhnc")
 
+[connection signal="body_entered" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_entered"]
+[connection signal="body_exited" from="mappiecesbutlab/labwall1/Area2D2" to="mappiecesbutlab/labwall1/Area2D2" method="_on_body_exited"]
 [connection signal="body_entered" from="Go back" to="Go back" method="_on_body_entered"]
 [connection signal="body_entered" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="WorkArea1Knife/table" to="WorkArea1Knife" method="_on_area_2d_body_exited"]
